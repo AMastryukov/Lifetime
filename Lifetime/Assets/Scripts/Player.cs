@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 enum PlayerStatus { ALIVE, DEAD }
@@ -8,8 +6,7 @@ enum PlayerStatus { ALIVE, DEAD }
 public class Player : MonoBehaviour
 {
     public float lifetime = 5f;
-
-    [SerializeField] private MovementControls movementControls;
+    
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PlayerStatus playerStatus = PlayerStatus.ALIVE;
     [SerializeField] private UnityEvent playerDeath;
