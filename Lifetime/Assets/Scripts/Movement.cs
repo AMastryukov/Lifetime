@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementControls : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1f;
 
@@ -23,5 +23,11 @@ public class MovementControls : MonoBehaviour
     {
         directionVector = newDirectionVector;
         directionVector.Normalize();
+    }
+
+    public void SetLookPosition(Vector3 newLookPosition)
+    {
+        transform.rotation = Quaternion.LookRotation(transform.position - newLookPosition, Vector3.forward);
+        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
     }
 }
