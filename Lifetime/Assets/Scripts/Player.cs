@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
             // Swap to ranged weapon
             case 2:
                 if (rangedWeapon)
+
                 {
                     activeWeapon = specialWeapon;
                 }
