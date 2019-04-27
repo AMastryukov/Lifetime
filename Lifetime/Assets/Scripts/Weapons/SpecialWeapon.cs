@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialWeapon : MonoBehaviour
+public class SpecialWeapon : MonoBehaviour, IWeapon
 {
     public float damage;
 
-    public void Fire()
+    public void Fire(Vector3 playerPosition, Vector3 directionVector)
     {
 
     }

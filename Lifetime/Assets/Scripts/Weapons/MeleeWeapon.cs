@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MeleeWeapon : MonoBehaviour
+public class MeleeWeapon : MonoBehaviour, IWeapon
 {
     public float damage;
     public float range;
