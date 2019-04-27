@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class RangedWeapon : MonoBehaviour, IWeapon
+public class RangedWeapon : MonoBehaviour
 {
     public float damage;
     public float range;

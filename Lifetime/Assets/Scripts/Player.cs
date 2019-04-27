@@ -6,6 +6,7 @@ enum PlayerStatus { ALIVE, DEAD }
 public class Player : MonoBehaviour
 {
     public float lifetime = 5f;
+    public MeleeWeapon meleeWeapon;
     
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PlayerStatus playerStatus = PlayerStatus.ALIVE;
@@ -31,7 +32,6 @@ public class Player : MonoBehaviour
 
         // Decrease lifetime
         lifetime -= Time.deltaTime;
-        Debug.Log(lifetime);
 
         // Kill player if they died on this frame
         if (lifetime < 0f)

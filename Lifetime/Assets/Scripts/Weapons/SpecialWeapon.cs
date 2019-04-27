@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialWeapon : MonoBehaviour, IWeapon
+public class SpecialWeapon : MonoBehaviour
 {
     public float damage;
 

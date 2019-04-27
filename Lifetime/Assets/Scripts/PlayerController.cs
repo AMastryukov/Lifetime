@@ -16,8 +16,11 @@ struct PlayerInput
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Movement playerMovement;
+    [SerializeField] private Player player;
 
     private PlayerInput playerInput;
+
+    private Vector3 playerDirection = Vector3.zero;
     
     void Update()
     {
@@ -30,6 +33,8 @@ public class PlayerController : MonoBehaviour
         // Fetch horizontal and vertical axes input
         playerInput.horizontalInput = Input.GetAxisRaw("Horizontal");
         playerInput.verticalInput = Input.GetAxisRaw("Vertical");
+
+        playerDirection = new Vector2(playerInput.horizontalInput, playerInput.verticalInput).normalized;
 
         // Fetch mouse position in world coordinates
         playerInput.mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -45,6 +50,14 @@ public class PlayerController : MonoBehaviour
     {
         // Update player movement look position and direction
         playerMovement.SetLookPosition(playerInput.mousePosition);
-        playerMovement.SetDirectionVector(new Vector2(playerInput.horizontalInput, playerInput.verticalInput));
+        playerMovement.SetDirectionVector(playerDirection);
+
+        // When the player presses left click, fire their active weapon
+        if (playerInput.mouseLeftClick)
+        {
+            player.meleeWeapon.Fire(
+                player.transform.position,
+                playerInput.mousePosition - transform.position);
+        }
     }
 }
