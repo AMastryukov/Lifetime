@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
         // Decrease lifetime
         lifetime -= Time.deltaTime;
-        Debug.Log(lifetime);
+        //Debug.Log(lifetime);
 
         // Kill player if they died on this frame
         if (lifetime < 0f)
