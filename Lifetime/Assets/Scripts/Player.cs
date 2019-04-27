@@ -7,9 +7,53 @@ public class Player : MonoBehaviour
 {
     public float lifetime = 5f;
     
+    public IWeapon activeWeapon;
+
+    [Header("Weapon Settings")]
+    public SpecialWeapon specialWeapon;
+    public RangedWeapon rangedWeapon;
+    public MeleeWeapon meleeWeapon;
+
+    [Header("Player Settings")]
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PlayerStatus playerStatus = PlayerStatus.ALIVE;
     [SerializeField] private UnityEvent playerDeath;
+
+    private void Start()
+    {
+        SwapActiveWeapon(3);
+    }
+
+    public void SwapActiveWeapon(int weaponSlot)
+    {
+        switch(weaponSlot)
+        {
+            // Swap to special weapon
+            case 1:
+                if (specialWeapon)
+                {
+                    activeWeapon = specialWeapon;
+                }
+                break;
+
+            // Swap to ranged weapon
+            case 2:
+                if (rangedWeapon)
+                {
+                    activeWeapon = specialWeapon;
+                }
+                break;
+
+            // Swap to melee weapon
+            case 3:
+                activeWeapon = meleeWeapon;
+                break;
+
+            default:
+                activeWeapon = meleeWeapon;
+                break;
+        }
+    }
 
     public void AdjustLifetime(float delta)
     {
@@ -31,7 +75,6 @@ public class Player : MonoBehaviour
 
         // Decrease lifetime
         lifetime -= Time.deltaTime;
-        //Debug.Log(lifetime);
 
         // Kill player if they died on this frame
         if (lifetime < 0f)

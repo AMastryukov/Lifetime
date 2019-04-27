@@ -10,7 +10,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
 
     private bool readyToFire = true;
 
-    public void Fire()
+    public void Fire(Vector3 playerPosition, Vector3 directionVector)
     {
 
     }
