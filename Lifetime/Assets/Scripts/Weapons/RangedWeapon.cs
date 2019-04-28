@@ -28,10 +28,17 @@ public class RangedWeapon : MonoBehaviour, IWeapon
                 return;
             }
 
+            // Damage object if it can be damaged
             if (hit.collider.GetComponent<MonoBehaviour>() is IDamageable)
             {
                 ((IDamageable)hit.collider.GetComponent<MonoBehaviour>()).TakeDamage(damage);
-                hit.collider.GetComponent<Rigidbody2D>().velocity = directionVector * knockback;
+            }
+
+            // Push object based on knockback
+            if (hit.collider.GetComponent<Rigidbody2D>())
+            {
+                // hit.collider.GetComponent<Rigidbody2D>().velocity = directionVector * knockback;
+                hit.collider.GetComponent<Rigidbody2D>().AddForceAtPosition(directionVector * knockback, hit.point);
             }
 
             // Put the weapon on cooldown
