@@ -11,11 +11,15 @@ public class BasicEnemy : Enemy
 
     [SerializeField] private CircleCollider2D attackArea;
     private float attackRadius;
-    
+
+
+    [SerializeField] protected Transform target;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         movement = GetComponent<Movement>();
         attackRadius = attackArea.radius;
         attackArea.enabled = false;
