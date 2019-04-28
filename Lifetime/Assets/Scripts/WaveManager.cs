@@ -9,14 +9,13 @@ public class WaveManager : MonoBehaviour
     private bool checkForEnemies = false;
     [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private Wave[] Waves;
-    [SerializeField] private int currentWave;
+    [SerializeField] public int currentWave;
     [SerializeField] private bool waveInProgress;
     [SerializeField] private UnityEvent WaveOver;
 
     // Start is called before the first frame update
     void Start()
     {
-        print(Waves.Length);
         currentWave = 0;
         waveInProgress = false;
     }
@@ -47,12 +46,30 @@ public class WaveManager : MonoBehaviour
         return true;
     }
 
+    public void StopWave() {
+        checkForEnemies = false;
+        StopSpawner();
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies) {
+            Destroy(enemy);
+        }
+    }
+
+    private void StopSpawner() {
+
+    }
+
     public void WaveEnded() {
         
         waveInProgress = false;
         currentWave++;
         WaveOver.Invoke();
         ;
+    }
+
+    public bool LastWaveEnded() {
+        return currentWave == Waves.Length;
     }
 
     

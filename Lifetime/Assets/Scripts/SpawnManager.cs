@@ -17,25 +17,25 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] private UnityEvent SpawnComplete;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         GameObject[] points = GameObject.FindGameObjectsWithTag("SpawnPoint");
         spawnPoints = new List<SpawnPoint>();
-        foreach (GameObject point in points) {
+        foreach (GameObject point in points)
+        {
             spawnPoints.Add(point.GetComponent<SpawnPoint>());
         }
         enemyDic = new Dictionary<EnemyName, GameObject>();
-        foreach (enemyInfo enemy in enemies) {
+        foreach (enemyInfo enemy in enemies)
+        {
             enemyDic.Add(enemy.enemyName, enemy.enemyPrefab);
         }
+    }
 
-        /*spawnsRemaining = 0;
-        foreach (SpawnInfo spawn in spawnInfo)
-        {
-            spawnsRemaining += spawn.enemyCount;
-        }
-        Begin();*/
+
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -69,21 +69,19 @@ public class SpawnManager : MonoBehaviour
     {
         while (spawnsRemaining > 0) {
             Spawn();
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForSeconds(1/spawnRate);
         }
         SpawnComplete.Invoke();
 
     }
 
     public void Spawn() {
-        int rand = Random.Range(0, spawnsRemaining - 1);
+        int rand = Random.Range(0, spawnsRemaining);
         foreach (SpawnInfo spawn in spawnInfo) {
             rand -= spawn.enemyCount;
             if (rand < 0) {
-                
-                int randSpawner = Random.Range(0, spawnPoints.Count - 1);
+                int randSpawner = Random.Range(0, spawnPoints.Count);
                 SpawnPoint spawner = spawnPoints[randSpawner];
-                
                 GameObject enemyInstance = spawner.Spawn(enemyDic[spawn.enemyName]);
 
                 if (!enemyInstance)
