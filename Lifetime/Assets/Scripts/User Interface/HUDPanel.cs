@@ -7,8 +7,51 @@ public class HUDPanel : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI lifetimeText;
     [SerializeField] private TextMeshProUGUI enemyText;
+
+    [SerializeField] private HUDWeaponSlot meleeSlot;
+    [SerializeField] private HUDWeaponSlot rangedSlot;
+    [SerializeField] private HUDWeaponSlot specialSlot;
     
-    // TODO: Hook up weapon panel
+    public void SelectWeaponSlot(int slot)
+    {
+        switch(slot)
+        {
+            // Select special slot, unselect others
+            case 1:
+                specialSlot.SelectSlot();
+                rangedSlot.UnselectSlot();
+                meleeSlot.UnselectSlot();
+                break;
+
+            // Select ranged slot, unselect others
+            case 2:
+                specialSlot.UnselectSlot();
+                rangedSlot.SelectSlot();
+                meleeSlot.UnselectSlot();
+                break;
+            
+            // Select melee slot, unselect others
+            case 3:
+                specialSlot.UnselectSlot();
+                rangedSlot.UnselectSlot();
+                meleeSlot.SelectSlot();
+                break;
+
+            // Default to selecting melee slot 
+            default:
+                specialSlot.UnselectSlot();
+                rangedSlot.UnselectSlot();
+                meleeSlot.SelectSlot();
+                break;
+        }
+    }
+
+    public void UpdatePlayerWeapons(Player player)
+    {
+        specialSlot.UpdateSpecialSLot(player.specialWeapon);
+        rangedSlot.UpdateRangedSlot(player.rangedWeapon);
+        meleeSlot.UpdateMeleeSlot(player.meleeWeapon);
+    }
 
     public void UpdateLifetime(float lifetime)
     {
