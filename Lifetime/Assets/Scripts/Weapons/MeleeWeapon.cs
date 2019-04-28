@@ -27,10 +27,19 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
             // Hit all objects
             foreach (RaycastHit2D hit in circleCastHits)
             {
+
+
                 // If object can be pushed, push it
                 if (hit.collider.GetComponent<Rigidbody2D>())
                 {
-                    hit.collider.GetComponent<Rigidbody2D>().AddForce(directionVector * knockback);
+                    //hit.collider.GetComponent<Rigidbody2D>().AddForce(directionVector * knockback, ForceMode2D.Force);
+                    hit.collider.GetComponent<Rigidbody2D>().velocity = directionVector * knockback;
+                    
+                }
+
+                if (hit.collider.GetComponent<MonoBehaviour>() is IDamageable)
+                {
+                    ((IDamageable)hit.collider.GetComponent<MonoBehaviour>()).TakeDamage(damage);
                 }
             }
 

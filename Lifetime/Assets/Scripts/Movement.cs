@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rigidBody;
-    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] protected Rigidbody2D rigidBody;
+    [SerializeField] protected float moveSpeed = 1f;
 
-    private Vector2 directionVector;
+    protected Vector2 directionVector;
     private Vector3 lookPosition = Vector3.zero;
 
     private void FixedUpdate()
@@ -17,8 +17,10 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        transform.rotation = Quaternion.LookRotation(transform.position - lookPosition, Vector3.forward);
-        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+
+        transform.rotation = Quaternion.LookRotation(Vector3.back, - transform.position + lookPosition);
+        //transform.rotation = Quaternion.LookRotation(transform.position - lookPosition, Vector3.forward);
+        //transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
     }
 
     public void SetDirectionVector(Vector2 newDirectionVector)
