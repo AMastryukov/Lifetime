@@ -10,6 +10,8 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
     public float knockback;
     public bool isAuto;
 
+    [SerializeField] private LayerMask hitMask;
+
     private bool readyToFire = true;
     private RaycastHit2D[] circleCastHits;
 
@@ -23,21 +25,19 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
                 0.5f,
                 directionVector,
                 range,
-                ~(1 << LayerMask.NameToLayer("Player")));
+                hitMask);
 
             // Hit all objects
             foreach (RaycastHit2D hit in circleCastHits)
             {
-
-
                 // If object can be pushed, push it
                 if (hit.collider.GetComponent<Rigidbody2D>())
                 {
-                    //hit.collider.GetComponent<Rigidbody2D>().AddForce(directionVector * knockback, ForceMode2D.Force);
-                    hit.collider.GetComponent<Rigidbody2D>().velocity = directionVector * knockback;
-                    
+                    hit.collider.GetComponent<Rigidbody2D>().AddForceAtPosition(directionVector * knockback, hit.point);
+                    //hit.collider.GetComponent<Rigidbody2D>().velocity = directionVector * knockback;
                 }
 
+                // Damage object if it can be damaged
                 if (hit.collider.GetComponent<MonoBehaviour>() is IDamageable)
                 {
                     ((IDamageable)hit.collider.GetComponent<MonoBehaviour>()).TakeDamage(damage);

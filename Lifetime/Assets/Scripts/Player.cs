@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
 
             // Swap to melee weapon
             case 3:
-                print("special weapon active");
+                print("melee weapon active");
                 activeWeapon = meleeWeapon;
                 break;
 
