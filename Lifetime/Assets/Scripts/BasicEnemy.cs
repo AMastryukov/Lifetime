@@ -5,9 +5,9 @@ using UnityEngine;
 public class BasicEnemy : Enemy
 {
 
-    public float directionChangeInterval = 1;
+    private float directionChangeInterval = 1;
 
-    public Vector2 targetDirection;
+    private Vector2 targetDirection;
 
     [SerializeField] private CircleCollider2D attackArea;
     private float attackRadius;

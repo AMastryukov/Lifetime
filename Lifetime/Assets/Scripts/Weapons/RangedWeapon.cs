@@ -23,7 +23,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
             ps.Emit(1);
 
             hit = Physics2D.Raycast(playerPosition, directionVector, range, hitMask);
-            if (!hit)
+            if (!hit.collider)
             {
                 return;
             }

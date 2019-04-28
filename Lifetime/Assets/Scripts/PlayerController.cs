@@ -22,13 +22,19 @@ struct PlayerInput
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Movement playerMovement;
-    [SerializeField] private Player player;
+    private Movement playerMovement;
+    private Player player;
 
     private PlayerInput playerInput;
 
     private Vector3 playerDirection = Vector3.zero;
-    
+
+    private void Start()
+    {
+        playerMovement = GetComponent<Movement>();
+        player = GetComponent<Player>();
+    }
+
     void Update()
     {
         UpdateInputs();

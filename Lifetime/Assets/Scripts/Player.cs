@@ -15,13 +15,16 @@ public class Player : MonoBehaviour
     public MeleeWeapon meleeWeapon;
 
     [Header("Player Settings")]
-    [SerializeField] private PlayerController playerController;
     [SerializeField] private PlayerStatus playerStatus = PlayerStatus.ALIVE;
     [SerializeField] private UnityEvent playerDeath;
 
+    private PlayerController playerController;
+
     private void Start()
     {
+        playerController = GetComponent<PlayerController>();
         SwapActiveWeapon(3);
+        
     }
 
     public void SwapActiveWeapon(int weaponSlot)
