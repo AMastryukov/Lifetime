@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
             case 1:
                 if (specialWeapon)
                 {
-                    print("special weapon active");
                     activeWeapon = specialWeapon;
                 }
                 break;
@@ -43,16 +42,13 @@ public class Player : MonoBehaviour
             // Swap to ranged weapon
             case 2:
                 if (rangedWeapon)
-
                 {
-                    print("range weapon active");
                     activeWeapon = rangedWeapon;
                 }
                 break;
 
             // Swap to melee weapon
             case 3:
-                print("melee weapon active");
                 activeWeapon = meleeWeapon;
                 break;
 

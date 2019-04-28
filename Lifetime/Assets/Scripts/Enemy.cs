@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected float health = 100;
     [SerializeField] protected float damage = 5;
     [SerializeField] protected float speed = 10;
-    [SerializeField] protected Transform target;
     [SerializeField] private UnityEvent playerDeath;
 
     protected Movement movement;
@@ -17,7 +16,7 @@ public class Enemy : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
