@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     {
         if (readyForNextWave) {
             if (!waveManager.SpawnNextWave()) {
-                print("GAME OVER");
             }
             readyForNextWave = false;
         }

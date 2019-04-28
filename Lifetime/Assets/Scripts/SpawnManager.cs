@@ -8,9 +8,9 @@ public class SpawnManager : MonoBehaviour
     
     [SerializeField] public List<enemyInfo> enemies;
     private List<SpawnPoint> spawnPoints;
-    [SerializeField] private float spawnRate;
+    private float spawnRate;
 
-    [SerializeField] private SpawnInfo[] spawnInfo;
+    private SpawnInfo[] spawnInfo;
     private int spawnsRemaining;
     private Coroutine spawner;
     private Dictionary<EnemyName, GameObject> enemyDic;
@@ -56,8 +56,6 @@ public class SpawnManager : MonoBehaviour
     }
 
     public void Begin() {
-
-        print("Spawning Wave");
         spawner = StartCoroutine(SpawnCycle());
     }
 
@@ -85,10 +83,7 @@ public class SpawnManager : MonoBehaviour
                 
                 int randSpawner = Random.Range(0, spawnPoints.Count - 1);
                 SpawnPoint spawner = spawnPoints[randSpawner];
-                while (!spawner.isActive()) {
-                    randSpawner = (randSpawner + 1) % spawnPoints.Count;
-                    spawner = spawnPoints[randSpawner];
-                }
+                
                 GameObject enemyInstance = spawner.Spawn(enemyDic[spawn.enemyName]);
 
                 if (!enemyInstance)
@@ -99,6 +94,7 @@ public class SpawnManager : MonoBehaviour
                     spawn.enemyCount--;
                     spawnsRemaining--;
                 }
+                return;
             }
         }
     }

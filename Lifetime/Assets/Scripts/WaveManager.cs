@@ -32,6 +32,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    // checkForEnemies used to check if the wave is over
     public void CheckForEnemies() {
         checkForEnemies = true;
     }
@@ -49,7 +50,6 @@ public class WaveManager : MonoBehaviour
     public void WaveEnded() {
         
         waveInProgress = false;
-        print("Wave " + currentWave + " Ended");
         currentWave++;
         WaveOver.Invoke();
         ;
