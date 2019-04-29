@@ -33,7 +33,7 @@ public class Player : MonoBehaviour, IDamageable
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
-        spawnLocation = GameObject.FindWithTag("PlayerSpawnPoint").transform;
+        //spawnLocation = GameObject.FindWithTag("PlayerSpawnPoint").transform;
     }
     private void Start()
     {
