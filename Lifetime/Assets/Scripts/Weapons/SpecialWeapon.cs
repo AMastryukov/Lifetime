@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialWeapon : MonoBehaviour, IWeapon
+public class SpecialWeapon : Weapon, IWeapon
 {
-    public float damage;
 
-    public void Fire(Vector3 playerPosition, Vector3 directionVector)
+    public override void Fire(Vector3 playerPosition, Vector3 directionVector, float damageModifier, float knockbackModifier)
     {
 
     }
