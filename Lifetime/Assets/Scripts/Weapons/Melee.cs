@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Melee : Weapon, IWeapon
 {
-
     private bool readyToFire = true;
     private RaycastHit2D[] circleCastHits;
 
@@ -18,6 +17,19 @@ public class Melee : Weapon, IWeapon
                 directionVector,
                 range,
                 hitMask);
+
+            // Play random punch animation
+            if (Random.Range(0f, 1f) < 0.5f)
+            {
+                player.playerAnimator.Play("melee-jab");
+            }
+            else
+            {
+                player.playerAnimator.Play("melee-cross");
+            }
+            
+            // Put the weapon on cooldown
+            StartCoroutine(WeaponCooldown());
 
             // Hit all objects
             foreach (RaycastHit2D hit in circleCastHits)
@@ -35,9 +47,6 @@ public class Melee : Weapon, IWeapon
                     ((IDamageable)hit.collider.GetComponent<MonoBehaviour>()).TakeDamage(damage);
                 }
             }
-
-            // Put the weapon on cooldown
-            StartCoroutine(WeaponCooldown());
         }
     }
 

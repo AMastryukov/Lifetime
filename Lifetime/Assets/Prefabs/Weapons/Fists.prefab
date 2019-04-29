@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2078925262982348472}
   - component: {fileID: 2078925262982348473}
   m_Layer: 8
-  m_Name: Melee
+  m_Name: Fists
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,9 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 100
   range: 2
-  fireRate: 1
+  fireRate: 2
+  clipSize: 0
+  reloadTime: 0
   knockback: 400
   isAutomatic: 0
+  player: {fileID: 0}
   hitMask:
     serializedVersion: 2
     m_Bits: 7680

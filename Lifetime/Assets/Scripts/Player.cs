@@ -5,6 +5,8 @@ enum PlayerStatus { ALIVE, DEAD }
 
 public class Player : MonoBehaviour, IDamageable
 {
+    public Animator playerAnimator;
+
     public float lifetime = 0;
     public float initialLifeTime = 0;
     private Transform spawnLocation;
@@ -90,6 +92,8 @@ public class Player : MonoBehaviour, IDamageable
                 activeWeapon = meleeWeapon;
                 break;
         }
+
+        UpdateIdleAnimation();
     }
 
     public void AddLifetime(float delta)
@@ -127,6 +131,9 @@ public class Player : MonoBehaviour, IDamageable
         Weapon weaponInstance = Instantiate(weapon, transform).GetComponent<Weapon>();
         if(meleeWeapon != null) Destroy(meleeWeapon.gameObject);
         meleeWeapon = weaponInstance;
+        meleeWeapon.player = this;
+
+        UpdateIdleAnimation();
     }
 
     public void equipMeleeWeapon(Weapon weapon)
@@ -134,20 +141,47 @@ public class Player : MonoBehaviour, IDamageable
         Weapon weaponInstance = Instantiate(weapon, transform).GetComponent<Weapon>();
         if (meleeWeapon != null) Destroy(meleeWeapon.gameObject);
         meleeWeapon = weaponInstance;
+        meleeWeapon.player = this;
+
+        UpdateIdleAnimation();
     }
 
     public void equipRangeWeapon(GameObject weapon) {
         Weapon weaponInstance = Instantiate(weapon, transform).GetComponent<Weapon>();
         if (rangedWeapon != null) Destroy(rangedWeapon.gameObject);
         rangedWeapon = weaponInstance;
+        meleeWeapon.player = this;
+
+        UpdateIdleAnimation();
     }
 
     public void equipSpecialWeapon(GameObject weapon) {
         Weapon weaponInstance = Instantiate(weapon, transform).GetComponent<Weapon>();
         if (specialWeapon != null) Destroy(specialWeapon.gameObject);
         specialWeapon = weaponInstance;
-    }
+        meleeWeapon.player = this;
 
+        UpdateIdleAnimation();
+    }
+    
+    private void UpdateIdleAnimation()
+    {
+        if (activeWeapon is Melee)
+        {
+            playerAnimator.Play("melee-idle");
+        }
+        else if (activeWeapon is Pistol)
+        {
+            playerAnimator.Play("pistol-idle");
+        }
+        else if (activeWeapon is AssaultRifle)
+        {
+            playerAnimator.Play("auto-idle");
+        }
+        else
+        {
+            playerAnimator.Play("melee-idle");
+        }
     public void TakeDamage(float damage)
     {
         lifetime -= damage;
