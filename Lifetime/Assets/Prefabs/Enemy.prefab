@@ -181,6 +181,9 @@ MonoBehaviour:
   target: {fileID: 0}
   ps: {fileID: 2175379524062971515, guid: b1097f0063dec04448e592e72099ef3a, type: 3}
   emissionAmount: 0
+  sightMask:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!50 &4979904061258340250
 Rigidbody2D:
   serializedVersion: 4
