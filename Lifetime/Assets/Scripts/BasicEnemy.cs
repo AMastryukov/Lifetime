@@ -83,9 +83,6 @@ public class BasicEnemy : Enemy
             //var forward = transform.TransformDirection(Vector3.forward);
             //controller.SimpleMove(forward);
         }
-
-
-
     }
 
     public override void TakeDamage(float damage)
