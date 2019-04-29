@@ -79,8 +79,6 @@ public class PlayerController : MonoBehaviour
                 player.knockbackModifier);
         }
 
-        
-
         // Swap active weapon
         if (playerInput.numberKey1)
         {
