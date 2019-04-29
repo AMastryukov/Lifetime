@@ -179,6 +179,8 @@ MonoBehaviour:
   speed: 50
   attackArea: {fileID: 4979904059908963849}
   target: {fileID: 0}
+  ps: {fileID: 2175379524062971515, guid: b1097f0063dec04448e592e72099ef3a, type: 3}
+  emissionAmount: 0
 --- !u!50 &4979904061258340250
 Rigidbody2D:
   serializedVersion: 4

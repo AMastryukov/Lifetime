@@ -14,6 +14,8 @@ public class BasicEnemy : Enemy
 
 
     [SerializeField] protected Transform target;
+    [SerializeField] private ParticleSystem ps;
+    [SerializeField] private int emissionAmount;
 
 
     // Start is called before the first frame update
@@ -47,6 +49,15 @@ public class BasicEnemy : Enemy
             controller.SimpleMove(forward);*/
         }
 
+        
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        ParticleSystem particles =  Instantiate(ps, transform.position, Quaternion.Euler(0, 0, target.rotation.z));
+        Destroy(particles, 10);
+
+        base.TakeDamage(damage);
         
     }
 

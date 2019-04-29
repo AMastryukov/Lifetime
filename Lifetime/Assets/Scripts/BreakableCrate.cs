@@ -39,4 +39,8 @@ public class BreakableCrate : MonoBehaviour, IDamageable
             gameObject.SetActive(false);
         }
     }
+
+    public void TakeCriticalDamage(float damage) {
+        TakeDamage(damage);
+    }
 }

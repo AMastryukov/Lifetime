@@ -24,12 +24,16 @@ public class Enemy : MonoBehaviour, IDamageable
 
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0) {
             Die();
         }
+    }
+
+    public virtual void TakeCriticalDamage(float damage) {
+        TakeDamage(damage);
     }
 
     public void Die() {
