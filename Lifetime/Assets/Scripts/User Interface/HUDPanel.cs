@@ -5,6 +5,9 @@ using TMPro;
 
 public class HUDPanel : MonoBehaviour
 {
+
+    [SerializeField] private Canvas panelCanvas;
+
     [SerializeField] private TextMeshProUGUI lifetimeText;
     [SerializeField] private TextMeshProUGUI enemyText;
 
@@ -61,5 +64,15 @@ public class HUDPanel : MonoBehaviour
     public void UpdateEnemyCount(int enemyCount)
     {
         enemyText.text = enemyCount + " enemies";
+    }
+
+    public void OpenPanel()
+    {
+        panelCanvas.enabled = true;
+    }
+
+    public void ClosePanel()
+    {
+            panelCanvas.enabled = false;
     }
 }

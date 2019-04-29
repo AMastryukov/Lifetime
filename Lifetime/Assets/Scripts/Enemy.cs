@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected float health = 100;
     [SerializeField] protected float damage = 5;
     [SerializeField] protected float speed = 10;
-    [SerializeField] private UnityEvent playerDeath;
 
     protected Movement movement;
 
@@ -29,7 +28,12 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         health -= damage;
         if (health <= 0) {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die() {
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().RegisterEnemyDeath();
+        Destroy(gameObject);
     }
 }
