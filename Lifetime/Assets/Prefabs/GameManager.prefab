@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 197194604509746693}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,5 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f270e85ba044045bb5d2cf7aca9f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  readyForNextWave: 0
   waveManager: {fileID: 0}
+  shopPanel: {fileID: 0}
+  hudPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  enemiesRemaining: 0
+  gameTime: 0
+  gameInProgress: 0

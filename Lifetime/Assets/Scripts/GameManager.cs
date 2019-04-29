@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     Any housekeeping before the round starts should be done here.
          */
-    private void StartNextWave()
+    public void StartNextWave()
     {
         EnablePlayer();
         ClearDisplay();
