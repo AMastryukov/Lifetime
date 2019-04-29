@@ -17,6 +17,10 @@ public class BasicEnemy : Enemy
     [SerializeField] private ParticleSystem ps;
     [SerializeField] private int emissionAmount;
 
+    [SerializeField] private LayerMask sightMask;
+
+    private bool agitated;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,7 @@ public class BasicEnemy : Enemy
         attackArea.enabled = false;
         NewHeadingRoutine();
         StartCoroutine(NewHeading());
+        agitated = false;
     }
 
     // Update is called once per frame
@@ -35,27 +40,47 @@ public class BasicEnemy : Enemy
 
         if (Vector2.Distance(target.position, transform.position) <= attackRadius)
         {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, target.position - transform.position, attackRadius, sightMask);
+            //Debug.DrawRay(playerPosition, transform.position - target.position);
+            if (!hit.collider)
+            {
+                return;
+            }
+            print(hit.collider.name);
+            if (hit.collider.tag == "Player") {
+                
+                agitated = true;
+                print(agitated);
+            }
+            if(agitated)
             movement.SetDirectionVector(target.transform.position - transform.position);
             movement.SetLookPosition(target.transform.position);
         }
         else {
-
-            // Wander
-            /*Vector3 newDirection = Vector3.Slerp(transform.forward, targetDirection, 0.1f);
-            movement.SetDirectionVector(newDirection);
-            movement.SetLookPosition(transform.position + newDirection);*/
-
-            /*var forward = transform.TransformDirection(Vector3.forward);
-            controller.SimpleMove(forward);*/
+            agitated = false;
         }
 
-        
+        if (agitated) {
+            movement.SetDirectionVector(target.transform.position - transform.position);
+            movement.SetLookPosition(target.transform.position);
+        } else {
+            // Wander
+            Vector3 newDirection = Vector3.Slerp(transform.up, targetDirection, 0.1f);
+            movement.SetDirectionVector(newDirection);
+            movement.SetLookPosition(transform.position + newDirection);
+
+            //var forward = transform.TransformDirection(Vector3.forward);
+            //controller.SimpleMove(forward);
+        }
+
+
+
     }
 
     public override void TakeDamage(float damage)
     {
         ParticleSystem particles =  Instantiate(ps, transform.position, Quaternion.Euler(0, 0, target.rotation.z));
-        Destroy(particles, 10);
+        Destroy(particles.gameObject, 10);
 
         base.TakeDamage(damage);
         
