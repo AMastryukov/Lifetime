@@ -24,10 +24,13 @@ public class BasicEnemy : Enemy
     private bool onCooldown;
     private bool agitated;
 
+    private GameObject bloodSystem;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        bloodSystem = GameObject.FindGameObjectWithTag("BloodParticleSystem");
         target = GameObject.FindGameObjectWithTag("Player").transform;
         movement = GetComponent<Movement>();
         attackRadius = attackArea.radius;
@@ -36,6 +39,8 @@ public class BasicEnemy : Enemy
         StartCoroutine(NewHeading());
         agitated = false;
         onCooldown = false;
+
+        AssignSkin();
 
         movement.moveSpeed = wanderSpeed;
     }
@@ -83,18 +88,15 @@ public class BasicEnemy : Enemy
             //var forward = transform.TransformDirection(Vector3.forward);
             //controller.SimpleMove(forward);
         }
-
-
-
     }
 
     public override void TakeDamage(float damage)
     {
-        ParticleSystem particles =  Instantiate(ps, transform.position, Quaternion.Euler(0, 0, target.rotation.z));
-        Destroy(particles.gameObject, 10);
+        // Spawn blood particles
+        bloodSystem.transform.position = transform.position;
+        bloodSystem.GetComponent<ParticleSystem>().Play();
 
         base.TakeDamage(damage);
-        
     }
 
     /// <summary>

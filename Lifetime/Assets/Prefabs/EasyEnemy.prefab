@@ -73,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 4979904060835583758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4979904061258340255}
   m_RootOrder: 0
@@ -177,6 +177,11 @@ MonoBehaviour:
   health: 100
   damage: 5
   speed: 20
+  spriteRenderer: {fileID: 4979904060835583756}
+  sprites:
+  - {fileID: 21300000, guid: 883a55c6ce95fe24b8341890bccc9d18, type: 3}
+  - {fileID: 21300000, guid: f5ff199604d50884a8b422ce3eb22009, type: 3}
+  - {fileID: 21300000, guid: e777e8ff0c742b64ab7ad71c1dc96573, type: 3}
   wanderSpeed: 20
   attackCooldown: 3
   attackArea: {fileID: 4979904059908963849}
