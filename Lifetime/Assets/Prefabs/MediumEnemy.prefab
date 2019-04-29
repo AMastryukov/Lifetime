@@ -177,6 +177,8 @@ MonoBehaviour:
   health: 100
   damage: 5
   speed: 50
+  wanderSpeed: 25
+  attackCooldown: 3
   attackArea: {fileID: 4979904059908963849}
   target: {fileID: 0}
   ps: {fileID: 2175379524062971515, guid: b1097f0063dec04448e592e72099ef3a, type: 3}
@@ -200,7 +202,7 @@ Rigidbody2D:
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 77b0328eb15564f4da9c9796c7f3cb98, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1

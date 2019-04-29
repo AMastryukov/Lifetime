@@ -760,6 +760,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8106456010004555031, guid: 1e8614a0140529644bca4350367cbc9b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106456010004555031, guid: 1e8614a0140529644bca4350367cbc9b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.091
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e8614a0140529644bca4350367cbc9b, type: 3}
 --- !u!1001 &337443671
@@ -1810,6 +1820,16 @@ PrefabInstance:
       propertyPath: Waves.Array.data[2].rate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
+        type: 3}
+      propertyPath: Waves.Array.data[2].healthMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
+        type: 3}
+      propertyPath: Waves.Array.data[1].healthMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e93595aee88674949b94ab3deb6173e9, type: 3}
 --- !u!1001 &485841082
@@ -1886,6 +1906,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 174719265206533626, guid: 6ace6a0ec7b15514f8f12ba011874435,
         type: 3}
+      propertyPath: enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 174719265206533626, guid: 6ace6a0ec7b15514f8f12ba011874435,
+        type: 3}
       propertyPath: SpawnComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1083445491}
@@ -1954,6 +1979,23 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[11]
       value: 
       objectReference: {fileID: 16628492}
+    - target: {fileID: 174719265206533626, guid: 6ace6a0ec7b15514f8f12ba011874435,
+        type: 3}
+      propertyPath: enemies.Array.data[0].enemyPrefab
+      value: 
+      objectReference: {fileID: 4979904061258340244, guid: 4299f6ca9ae581a48b15540d26753356,
+        type: 3}
+    - target: {fileID: 174719265206533626, guid: 6ace6a0ec7b15514f8f12ba011874435,
+        type: 3}
+      propertyPath: enemies.Array.data[1].enemyPrefab
+      value: 
+      objectReference: {fileID: 4979904061258340244, guid: dcacce46a7e0f0a479da4e8cd10ddfae,
+        type: 3}
+    - target: {fileID: 174719265206533626, guid: 6ace6a0ec7b15514f8f12ba011874435,
+        type: 3}
+      propertyPath: enemies.Array.data[1].enemyName
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ace6a0ec7b15514f8f12ba011874435, type: 3}
 --- !u!1 &495219191

@@ -9,16 +9,19 @@ public class BasicEnemy : Enemy
 
     private Vector2 targetDirection;
 
+    [SerializeField] private float wanderSpeed;
+    [SerializeField] private float attackCooldown;
+
     [SerializeField] private CircleCollider2D attackArea;
     private float attackRadius;
 
 
     [SerializeField] protected Transform target;
     [SerializeField] private ParticleSystem ps;
-    [SerializeField] private int emissionAmount;
 
     [SerializeField] private LayerMask sightMask;
 
+    private bool onCooldown;
     private bool agitated;
 
 
@@ -32,11 +35,18 @@ public class BasicEnemy : Enemy
         NewHeadingRoutine();
         StartCoroutine(NewHeading());
         agitated = false;
+        onCooldown = false;
+
+        movement.moveSpeed = wanderSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (onCooldown) {
+            movement.SetDirectionVector(Vector2.zero);
+            return;
+        }
 
         if (Vector2.Distance(target.position, transform.position) <= attackRadius)
         {
@@ -46,11 +56,11 @@ public class BasicEnemy : Enemy
             {
                 return;
             }
-            print(hit.collider.name);
+
             if (hit.collider.tag == "Player") {
                 
                 agitated = true;
-                print(agitated);
+                movement.moveSpeed = speed;
             }
             if(agitated)
             movement.SetDirectionVector(target.transform.position - transform.position);
@@ -58,6 +68,7 @@ public class BasicEnemy : Enemy
         }
         else {
             agitated = false;
+            movement.moveSpeed = wanderSpeed;
         }
 
         if (agitated) {
@@ -108,5 +119,24 @@ public class BasicEnemy : Enemy
         float x = Random.Range(-1f, 1f);
         float y = Random.Range(-1f, 1f);
         targetDirection = new Vector2(x, y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (onCooldown) return;
+        if (collision.gameObject.tag == "Player") {
+            ((IDamageable)collision.gameObject.GetComponent<MonoBehaviour>()).TakeDamage(damage);
+            StartCoroutine(AttackCoolDown());
+            
+        }
+    }
+
+    private IEnumerator AttackCoolDown()
+    {
+        onCooldown = true;
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        onCooldown = false;
     }
 }
