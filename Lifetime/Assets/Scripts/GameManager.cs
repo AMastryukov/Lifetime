@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
          */
     [Header("For debug")]
     [SerializeField] private int enemiesRemaining;
+    [SerializeField] private float gameTime;
+    [SerializeField] private bool gameInProgress;
 
 
     private Player player;
@@ -35,9 +37,15 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-
         ResetGame();
         StartGame();
+    }
+
+    private void Update()
+    {
+        if (gameInProgress) {
+            gameTime += Time.deltaTime;
+        }
     }
 
     /*
@@ -46,6 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
+        gameInProgress = true;
         StartNextWave();
     }
 
@@ -54,16 +63,20 @@ public class GameManager : MonoBehaviour
         ClearDisplay();
         DisablePlayer();
         waveManager.Reset();
-        // Also reset player position to start
+        gameTime = 0f;
+        gameInProgress = false;
+
+        // Should also reset player position to start
+        player.Reset();
+        
     }
 
     private void GameOver()
     {
-        print("GameOver");
         DisablePlayer();
         ClearDisplay();
         EnableGameOverScreen();
-        
+        gameInProgress = false;
     }
 
     /*
@@ -80,7 +93,7 @@ public class GameManager : MonoBehaviour
         ClearDisplay();
         EnableHUD();
         enemiesRemaining = waveManager.SpawnNextWave();
-        print(enemiesRemaining);
+        gameInProgress = true;
     }
 
     /*
@@ -95,13 +108,14 @@ public class GameManager : MonoBehaviour
      to be spawned (and of course, no enemies alive).
          */
     public void WaveOver() {
-
+        
         if (waveManager.LastWaveEnded())
         {
             GameOver();
             return;
         }
 
+        gameInProgress = false;
         EnableShop();
         DisablePlayer();
     }
@@ -111,6 +125,7 @@ public class GameManager : MonoBehaviour
          */
     public void RegisterEnemyDeath() {
         enemiesRemaining--;
+        player.AddLifetime(5);
     }
 
     /*
@@ -122,16 +137,25 @@ public class GameManager : MonoBehaviour
     }
 
     /*
+     When player dies, handle here
+         */
+    public void RegisterPlayerDeath() {
+        GameOver();
+    }
+
+    /*
      HOUSEKEEPING. MASTERHAND. EXPLICIT CONTROL. THAT KINDA STUFF (ALSO PRIVATE);
          */
 
     private void DisablePlayer() {
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Movement>().enabled = false;
+        player.enabled = false;
     }
 
     private void EnablePlayer()
     {
+        player.enabled = true;
         player.GetComponent<PlayerController>().enabled = true;
         player.GetComponent<Movement>().enabled = true;
     }
