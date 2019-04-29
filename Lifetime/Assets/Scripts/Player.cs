@@ -5,7 +5,9 @@ enum PlayerStatus { ALIVE, DEAD }
 
 public class Player : MonoBehaviour
 {
-    public float lifetime = 5f;
+    public float lifetime = 0;
+    public float initialLifeTime = 0;
+    private Transform spawnLocation;
     
     public IWeapon activeWeapon;
 
@@ -15,16 +17,30 @@ public class Player : MonoBehaviour
     public MeleeWeapon meleeWeapon;
 
     [Header("Player Settings")]
-    [SerializeField] private PlayerStatus playerStatus = PlayerStatus.ALIVE;
+    [SerializeField] private PlayerStatus playerStatus;
     [SerializeField] private UnityEvent playerDeath;
 
     private PlayerController playerController;
 
-    private void Start()
+    private void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        spawnLocation = GameObject.FindWithTag("PlayerSpawnPoint").transform;
+    }
+    private void Start()
+    {
+        if (spawnLocation == null) {
+            Debug.LogError("No object tagged as PlayerSpawnPoint in scene");
+        }
+        Reset();
+    }
+
+    public void Reset()
+    {
+        playerStatus = PlayerStatus.ALIVE;
         SwapActiveWeapon(3);
-        
+        lifetime = initialLifeTime;
+        //transform.position = spawnLocation.position;
     }
 
     public void SwapActiveWeapon(int weaponSlot)
@@ -58,26 +74,27 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AdjustLifetime(float delta)
+    public void AddLifetime(float delta)
     {
         lifetime += delta;
     }
 
     private void Update()
     {
-        DrainLifetime();
+
+        // Return if player is already dead
+        if (playerStatus == PlayerStatus.ALIVE)
+        {
+            // Time based life drain
+            DrainLifetime(Time.deltaTime);
+        }
+        
     }
 
-    private void DrainLifetime()
+    private void DrainLifetime(float amount)
     {
-        // Return if player is already dead
-        if (playerStatus == PlayerStatus.DEAD)
-        {
-            return;
-        }
 
-        // Decrease lifetime
-        lifetime -= Time.deltaTime;
+        lifetime -= amount;
 
         // Kill player if they died on this frame
         if (lifetime < 0f)

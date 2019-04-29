@@ -93,9 +93,9 @@ GameObject:
   - component: {fileID: 8106456011797899522}
   - component: {fileID: 8106456011797899526}
   - component: {fileID: 8106456011797899527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.054163635}
   serializedVersion: 2
   m_Radius: 0.35
 --- !u!114 &8106456011797899522
@@ -165,7 +165,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
-  playerController: {fileID: 8106456011797899526}
+  initialLifeTime: 0
+  spawnLocation: {fileID: 0}
+  specialWeapon: {fileID: 0}
+  rangedWeapon: {fileID: 0}
+  meleeWeapon: {fileID: 0}
   playerStatus: 0
   playerDeath:
     m_PersistentCalls:
@@ -195,7 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1667c7c9f3725d0438e8a4ed293dde18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 8106456011797899527}
 --- !u!114 &8106456011797899527
 MonoBehaviour:
   m_ObjectHideFlags: 0
