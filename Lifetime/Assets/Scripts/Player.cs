@@ -163,7 +163,7 @@ public class Player : MonoBehaviour, IDamageable
 
         UpdateIdleAnimation();
     }
-    
+
     private void UpdateIdleAnimation()
     {
         if (activeWeapon is Melee)
@@ -182,6 +182,8 @@ public class Player : MonoBehaviour, IDamageable
         {
             playerAnimator.Play("melee-idle");
         }
+    }
+    
     public void TakeDamage(float damage)
     {
         lifetime -= damage;
