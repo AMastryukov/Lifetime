@@ -11,8 +11,9 @@ public class Weapon : MonoBehaviour, IWeapon
     public float reloadTime;
     public float knockback;
     public bool isAutomatic;
-
-
+    
+    public Player player;
+    
     [SerializeField] protected LayerMask hitMask;
 
     public virtual void Fire(Vector3 origin, Vector3 direction, float damageModifier, float knockbackModifier)

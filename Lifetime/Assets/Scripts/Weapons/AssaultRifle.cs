@@ -3,20 +3,21 @@ using UnityEngine;
 
 public class AssaultRifle : Weapon, IWeapon
 {
-    
-    
-
     protected bool readyToFire = true;
     [SerializeField] private ParticleSystem ps;
 
     private RaycastHit2D hit;
-
 
     public override void Fire(Vector3 playerPosition, Vector3 directionVector, float damageModifier, float knockbackModifier)
     {
         if (readyToFire)
         {
             ps.Emit(1);
+
+            player.playerAnimator.Play("auto-fire");
+            
+            // Put the weapon on cooldown
+            StartCoroutine(WeaponCooldown());
 
             hit = Physics2D.Raycast(playerPosition, directionVector, range, hitMask);
             if (!hit.collider)
@@ -36,9 +37,6 @@ public class AssaultRifle : Weapon, IWeapon
                 // hit.collider.GetComponent<Rigidbody2D>().velocity = directionVector * knockback;
                 hit.collider.GetComponent<Rigidbody2D>().AddForceAtPosition(directionVector * knockback * knockbackModifier, hit.point);
             }
-
-            // Put the weapon on cooldown
-            StartCoroutine(WeaponCooldown());
         }
 
     }
