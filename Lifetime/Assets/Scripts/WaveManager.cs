@@ -39,7 +39,7 @@ public class WaveManager : MonoBehaviour
         if (currentWave == Waves.Length) {
             return -1;
         }
-        int enemiesToBeSpawned = spawnManager.Begin(Waves[currentWave].spawns, Waves[currentWave].rate);
+        int enemiesToBeSpawned = spawnManager.Begin(Waves[currentWave].spawns, Waves[currentWave].rate, Waves[currentWave].healthMultiplier);
         return enemiesToBeSpawned;
     }
 
@@ -80,5 +80,6 @@ public class Wave {
 
     [SerializeField] public SpawnInfo[] spawns;
     [SerializeField] public float rate;
+    [SerializeField] public float healthMultiplier = 1;
 
 }

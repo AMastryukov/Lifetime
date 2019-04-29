@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 enum PlayerStatus { ALIVE, DEAD }
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     public float lifetime = 0;
     public float initialLifeTime = 0;
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
-        spawnLocation = GameObject.FindWithTag("PlayerSpawnPoint").transform;
+        //spawnLocation = GameObject.FindWithTag("PlayerSpawnPoint").transform;
     }
     private void Start()
     {
@@ -148,4 +148,13 @@ public class Player : MonoBehaviour
         specialWeapon = weaponInstance;
     }
 
+    public void TakeDamage(float damage)
+    {
+        lifetime -= damage;
+    }
+
+    public void TakeCriticalDamage(float Damage)
+    {
+        lifetime -= Damage;
+    }
 }

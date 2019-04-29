@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour, IDamageable
 {
 
-    [SerializeField] protected float health = 100;
+    [SerializeField] public float health = 100;
     [SerializeField] protected float damage = 5;
     [SerializeField] protected float speed = 10;
 

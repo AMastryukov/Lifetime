@@ -65,8 +65,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -343354265
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8e648fcf803abe84797481522eef95e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -165,8 +165,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
-  initialLifeTime: 0
-  spawnLocation: {fileID: 0}
+  initialLifeTime: 100
+  damageModifier: 1
+  luckModifier: 1
+  staminaModifier: 1
+  knockbackModifier: 1
+  speedModifier: 1
+  defaultMeleeWeapon: {fileID: 2078925262982348473, guid: b3267bb67d99c9247900d868fb5c5a12,
+    type: 3}
+  activeWeapon: {fileID: 0}
   specialWeapon: {fileID: 0}
   rangedWeapon: {fileID: 0}
   meleeWeapon: {fileID: 0}
@@ -174,9 +181,9 @@ MonoBehaviour:
   playerDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8106456011797899527}
-        m_MethodName: set_enabled
-        m_Mode: 6
+      - m_Target: {fileID: 0}
+        m_MethodName: RegisterPlayerDeath
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
