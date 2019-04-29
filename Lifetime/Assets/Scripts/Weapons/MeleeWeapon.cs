@@ -1,21 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MeleeWeapon : MonoBehaviour, IWeapon
+public class MeleeWeapon : Weapon, IWeapon
 {
-    
-    public float damage;
-    public float range;
-    public float fireRate;
-    public float knockback;
-    public bool isAuto;
-
-    [SerializeField] private LayerMask hitMask;
 
     private bool readyToFire = true;
     private RaycastHit2D[] circleCastHits;
 
-    public void Fire(Vector3 playerPosition, Vector3 directionVector)
+    public override void Fire(Vector3 playerPosition, Vector3 directionVector, float damageModifier, float knockbackModifier)
     {
         if (readyToFire)
         {

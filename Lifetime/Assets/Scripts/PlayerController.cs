@@ -71,12 +71,15 @@ public class PlayerController : MonoBehaviour
         playerMovement.SetDirectionVector(playerDirection);
 
         // When the player presses left click, fire their active weapon
-        if (playerInput.mouseLeftClick)
-        {
+        if ((player.activeWeapon.isAutomatic && playerInput.mouseLeftHeld) || (!player.activeWeapon.isAutomatic && playerInput.mouseLeftClick)) {
             player.activeWeapon.Fire(
                 transform.position,
-                playerInput.mousePosition - transform.position);
+                playerInput.mousePosition - transform.position,
+                player.damageModifier,
+                player.knockbackModifier);
         }
+
+        
 
         // Swap active weapon
         if (playerInput.numberKey1)

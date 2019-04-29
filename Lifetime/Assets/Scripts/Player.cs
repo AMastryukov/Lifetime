@@ -8,13 +8,21 @@ public class Player : MonoBehaviour
     public float lifetime = 0;
     public float initialLifeTime = 0;
     private Transform spawnLocation;
-    
-    public IWeapon activeWeapon;
+
+    [Header("Attribute Modifiers")]
+    public float damageModifier = 1;
+    public float luckModifier = 1;
+    public float staminaModifier = 1;
+    public float knockbackModifier = 1;
+    public float speedModifier = 1;
+
+    public Weapon defaultMeleeWeapon;
+    public Weapon activeWeapon;
 
     [Header("Weapon Settings")]
-    public SpecialWeapon specialWeapon;
-    public RangedWeapon rangedWeapon;
-    public MeleeWeapon meleeWeapon;
+    public Weapon specialWeapon;
+    public Weapon rangedWeapon;
+    public Weapon meleeWeapon;
 
     [Header("Player Settings")]
     [SerializeField] private PlayerStatus playerStatus;
@@ -38,8 +46,18 @@ public class Player : MonoBehaviour
     public void Reset()
     {
         playerStatus = PlayerStatus.ALIVE;
-        SwapActiveWeapon(3);
         lifetime = initialLifeTime;
+
+
+        equipMeleeWeapon(defaultMeleeWeapon);
+        Destroy(rangedWeapon);
+        Destroy(specialWeapon);
+        rangedWeapon = null;
+        specialWeapon = null;
+
+        SwapActiveWeapon(3);
+
+
         //transform.position = spawnLocation.position;
     }
 
@@ -91,7 +109,7 @@ public class Player : MonoBehaviour
         
     }
 
-    private void DrainLifetime(float amount)
+    public void DrainLifetime(float amount)
     {
 
         lifetime -= amount;
@@ -104,4 +122,30 @@ public class Player : MonoBehaviour
             playerDeath.Invoke();
         }
     }
+
+    public void equipMeleeWeapon(GameObject weapon) {
+        Weapon weaponInstance = Instantiate(weapon, transform).GetComponent<Weapon>();
+        if(meleeWeapon != null) Destroy(meleeWeapon.gameObject);
+        meleeWeapon = weaponInstance;
+    }
+
+    public void equipMeleeWeapon(Weapon weapon)
+    {
+        Weapon weaponInstance = Instantiate(weapon, transform).GetComponent<Weapon>();
+        if (meleeWeapon != null) Destroy(meleeWeapon.gameObject);
+        meleeWeapon = weaponInstance;
+    }
+
+    public void equipRangeWeapon(GameObject weapon) {
+        Weapon weaponInstance = Instantiate(weapon, transform).GetComponent<Weapon>();
+        if (rangedWeapon != null) Destroy(rangedWeapon.gameObject);
+        rangedWeapon = weaponInstance;
+    }
+
+    public void equipSpecialWeapon(GameObject weapon) {
+        Weapon weaponInstance = Instantiate(weapon, transform).GetComponent<Weapon>();
+        if (specialWeapon != null) Destroy(specialWeapon.gameObject);
+        specialWeapon = weaponInstance;
+    }
+
 }

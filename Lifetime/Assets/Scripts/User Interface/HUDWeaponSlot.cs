@@ -23,7 +23,7 @@ public class HUDWeaponSlot : MonoBehaviour
         slotImage.color = regularColor;
     }
 
-    public void UpdateRangedSlot(RangedWeapon weapon)
+    public void UpdateRangedSlot(Weapon weapon)
     {
         if (!weapon)
         {
@@ -37,7 +37,7 @@ public class HUDWeaponSlot : MonoBehaviour
         ammoCount.text = weapon.ammo */
     }
 
-    public void UpdateMeleeSlot(MeleeWeapon weapon)
+    public void UpdateMeleeSlot(Weapon weapon)
     {
         if (!weapon)
         {
@@ -50,7 +50,7 @@ public class HUDWeaponSlot : MonoBehaviour
         ammoCount.text = "";
     }
 
-    public void UpdateSpecialSLot(SpecialWeapon weapon)
+    public void UpdateSpecialSLot(Weapon weapon)
     {
         if (!weapon)
         {
