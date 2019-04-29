@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MeleeWeapon : Weapon, IWeapon
+public class Melee : Weapon, IWeapon
 {
 
     private bool readyToFire = true;
