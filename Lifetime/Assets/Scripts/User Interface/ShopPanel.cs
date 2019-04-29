@@ -13,10 +13,6 @@ public class ShopPanel : MonoBehaviour, IPanel
 
     public void ClosePanel()
     {
-        if(panelCanvas.enabled)
-        {
-            panelCanvas.enabled = false;
-            closeShop.Invoke();
-        }
+        panelCanvas.enabled = false;
     }
 }

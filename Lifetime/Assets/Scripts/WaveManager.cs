@@ -10,14 +10,12 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private Wave[] Waves;
     [SerializeField] public int currentWave;
-    [SerializeField] private bool waveInProgress;
     [SerializeField] private UnityEvent WaveOver;
 
     // Start is called before the first frame update
     void Start()
     {
         currentWave = 0;
-        waveInProgress = false;
     }
 
     // Update is called once per frame
@@ -37,21 +35,23 @@ public class WaveManager : MonoBehaviour
     }
 
     // Return false if no more waves
-    public bool SpawnNextWave() {
+    public int SpawnNextWave() {
         if (currentWave == Waves.Length) {
-            return false;
+            return -1;
         }
-        spawnManager.Begin(Waves[currentWave].spawns, Waves[currentWave].rate);
-        waveInProgress = true;
-        return true;
+        int enemiesToBeSpawned = spawnManager.Begin(Waves[currentWave].spawns, Waves[currentWave].rate);
+        return enemiesToBeSpawned;
     }
 
-    public void StopWave() {
-        checkForEnemies = false;
+    public void Reset()
+    {
         StopSpawner();
+        checkForEnemies = false;
+        currentWave = 0;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        foreach (GameObject enemy in enemies) {
+        foreach (GameObject enemy in enemies)
+        {
             Destroy(enemy);
         }
     }
@@ -62,7 +62,6 @@ public class WaveManager : MonoBehaviour
 
     public void WaveEnded() {
         
-        waveInProgress = false;
         currentWave++;
         WaveOver.Invoke();
         ;

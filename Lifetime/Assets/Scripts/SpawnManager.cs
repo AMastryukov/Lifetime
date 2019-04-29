@@ -55,14 +55,21 @@ public class SpawnManager : MonoBehaviour
         this.spawnInfo = spawnInfo;
     }
 
-    public void Begin() {
+    public int Begin() {
+        int startingSpawnNumber = spawnsRemaining;
         spawner = StartCoroutine(SpawnCycle());
+        return startingSpawnNumber;
     }
 
-    public void Begin(SpawnInfo[] spawns, float spawnRate)
+    public int Begin(SpawnInfo[] spawns, float spawnRate)
     {
         Initialize(spawns, spawnRate);
-        Begin();
+        return Begin();
+    }
+
+    public void StopSpawning()
+    {
+        StopCoroutine(spawner);
     }
 
     private IEnumerator SpawnCycle()
@@ -77,7 +84,8 @@ public class SpawnManager : MonoBehaviour
 
     public void Spawn() {
         int rand = Random.Range(0, spawnsRemaining);
-        foreach (SpawnInfo spawn in spawnInfo) {
+        for (int i = 0; i < spawnInfo.Length; i++) {
+            SpawnInfo spawn = spawnInfo[i];
             rand -= spawn.enemyCount;
             if (rand < 0) {
                 int randSpawner = Random.Range(0, spawnPoints.Count);
@@ -110,7 +118,7 @@ public struct enemyInfo
 }
 
 [System.Serializable]
-public class SpawnInfo
+public struct SpawnInfo
 {
     public EnemyName enemyName;
 
