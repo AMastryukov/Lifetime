@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - PlayerSpawnPoint
   - BloodParticleSystem
+  - SoundSystem
   layers:
   - Default
   - TransparentFX

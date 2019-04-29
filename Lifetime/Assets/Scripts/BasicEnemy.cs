@@ -31,6 +31,7 @@ public class BasicEnemy : Enemy
     void Start()
     {
         bloodSystem = GameObject.FindGameObjectWithTag("BloodParticleSystem");
+        audioSource = GameObject.FindGameObjectWithTag("SoundSystem").GetComponent<AudioSource>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         movement = GetComponent<Movement>();
         attackRadius = attackArea.radius;
