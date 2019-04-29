@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 enum PlayerStatus { ALIVE, DEAD }
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     public Animator playerAnimator;
 
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
-        spawnLocation = GameObject.FindWithTag("PlayerSpawnPoint").transform;
+        //spawnLocation = GameObject.FindWithTag("PlayerSpawnPoint").transform;
     }
     private void Start()
     {
@@ -182,5 +182,13 @@ public class Player : MonoBehaviour
         {
             playerAnimator.Play("melee-idle");
         }
+    public void TakeDamage(float damage)
+    {
+        lifetime -= damage;
+    }
+
+    public void TakeCriticalDamage(float Damage)
+    {
+        lifetime -= Damage;
     }
 }

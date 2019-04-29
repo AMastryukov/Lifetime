@@ -45,6 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - enemyName: 0
+    enemyPrefab: {fileID: 4979904061258340244, guid: 4299f6ca9ae581a48b15540d26753356,
+      type: 3}
+  - enemyName: 1
     enemyPrefab: {fileID: 4979904061258340244, guid: dcacce46a7e0f0a479da4e8cd10ddfae,
       type: 3}
   SpawnComplete:

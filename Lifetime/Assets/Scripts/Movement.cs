@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rigidBody;
-    [SerializeField] protected float moveSpeed = 1f;
+    [SerializeField] public float moveSpeed = 1f;
 
     protected Vector2 directionVector;
     private Vector3 lookPosition = Vector3.zero;

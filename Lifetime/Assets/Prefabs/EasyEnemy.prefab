@@ -112,8 +112,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -320207505
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4979904061258340251}
   - component: {fileID: 4979904061258340249}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: EasyEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,11 +176,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 5
-  speed: 50
+  speed: 20
+  wanderSpeed: 20
+  attackCooldown: 3
   attackArea: {fileID: 4979904059908963849}
   target: {fileID: 0}
   ps: {fileID: 2175379524062971515, guid: b1097f0063dec04448e592e72099ef3a, type: 3}
-  emissionAmount: 0
   sightMask:
     serializedVersion: 2
     m_Bits: 768
@@ -200,7 +201,7 @@ Rigidbody2D:
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 77b0328eb15564f4da9c9796c7f3cb98, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1

@@ -14,6 +14,7 @@ public class SpawnManager : MonoBehaviour
     private int spawnsRemaining;
     private Coroutine spawner;
     private Dictionary<EnemyName, GameObject> enemyDic;
+    private float healthMultiplier;
 
     [SerializeField] private UnityEvent SpawnComplete;
 
@@ -44,13 +45,14 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    public void Initialize(SpawnInfo[] spawnInfo, float spawnRate)
+    public void Initialize(SpawnInfo[] spawnInfo, float spawnRate, float healthMultiplier)
     {
         spawnsRemaining = 0;
         foreach (SpawnInfo spawn in spawnInfo) {
             spawnsRemaining += spawn.enemyCount;
         }
 
+        this.healthMultiplier = healthMultiplier;
         this.spawnRate = spawnRate;
         this.spawnInfo = spawnInfo;
     }
@@ -61,9 +63,9 @@ public class SpawnManager : MonoBehaviour
         return startingSpawnNumber;
     }
 
-    public int Begin(SpawnInfo[] spawns, float spawnRate)
+    public int Begin(SpawnInfo[] spawns, float spawnRate, float healthMultiplier)
     {
-        Initialize(spawns, spawnRate);
+        Initialize(spawns, spawnRate, healthMultiplier);
         return Begin();
     }
 
@@ -85,19 +87,19 @@ public class SpawnManager : MonoBehaviour
     public void Spawn() {
         int rand = Random.Range(0, spawnsRemaining);
         for (int i = 0; i < spawnInfo.Length; i++) {
-            SpawnInfo spawn = spawnInfo[i];
-            rand -= spawn.enemyCount;
+            rand -= spawnInfo[i].enemyCount;
             if (rand < 0) {
                 int randSpawner = Random.Range(0, spawnPoints.Count);
                 SpawnPoint spawner = spawnPoints[randSpawner];
-                GameObject enemyInstance = spawner.Spawn(enemyDic[spawn.enemyName]);
+                GameObject enemyInstance = spawner.Spawn(enemyDic[spawnInfo[i].enemyName]);
 
                 if (!enemyInstance)
                 {
                     //Debug.LogError("Was not able to spawn enemy");
                 }
                 else {
-                    spawn.enemyCount--;
+                    enemyInstance.GetComponent<Enemy>().health *= healthMultiplier;
+                    spawnInfo[i].enemyCount--;
                     spawnsRemaining--;
                 }
                 return;
