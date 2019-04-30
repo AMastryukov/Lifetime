@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class Pistol : Weapon, IWeapon
 {
+    [SerializeField] private int ammoCount = 10;
     protected bool readyToFire = true;
     [SerializeField] private ParticleSystem ps;
 
     private RaycastHit2D hit;
-    
+
     public override void Fire(Vector3 playerPosition, Vector3 directionVector, float damageModifier, float knockbackModifier)
     {
         if (readyToFire)
@@ -17,7 +18,15 @@ public class Pistol : Weapon, IWeapon
             player.playerAnimator.Play("pistol-fire");
 
             audioSource.PlayOneShot(fireAudioClips[Random.Range(0, fireAudioClips.Length)]);
-            
+
+            // Deplete ammo
+            ammoCount--;
+            if (ammoCount <= 0)
+            {
+                player.SwapActiveWeapon(3);
+                Destroy(this);
+            }
+
             // Put the weapon on cooldown
             StartCoroutine(WeaponCooldown());
 

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AssaultRifle : Weapon, IWeapon
 {
+    [SerializeField] private int ammoCount = 20;
     protected bool readyToFire = true;
     [SerializeField] private ParticleSystem ps;
 
@@ -17,6 +18,14 @@ public class AssaultRifle : Weapon, IWeapon
             player.playerAnimator.Play("auto-fire");
             
             audioSource.PlayOneShot(fireAudioClips[Random.Range(0, fireAudioClips.Length)]);
+            
+            // Deplete ammo
+            ammoCount--;
+            if (ammoCount <= 0)
+            {
+                player.SwapActiveWeapon(3);
+                Destroy(this);
+            }
 
             // Put the weapon on cooldown
             StartCoroutine(WeaponCooldown());

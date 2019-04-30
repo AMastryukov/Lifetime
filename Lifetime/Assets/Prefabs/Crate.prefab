@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b100a718b78b986489fbc9e042b905ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 100
+  hitpoints: 250
   sprites:
   - {fileID: 21300000, guid: 06f562816e0862e4b84898c00194235f, type: 3}
   - {fileID: 21300000, guid: f110dffc5b9686d4b9bccfacdcb8160b, type: 3}
@@ -153,3 +153,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  weaponPrefabs:
+  - {fileID: 3874749147324130074, guid: 90eb644fd15e0164dbd667bbdee05db7, type: 3}
+  - {fileID: 3874749147324130074, guid: c7b5a9698096e7f458557ee8193838c8, type: 3}

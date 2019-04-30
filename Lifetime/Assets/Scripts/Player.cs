@@ -142,6 +142,7 @@ public class Player : MonoBehaviour, IDamageable
         if (meleeWeapon != null) Destroy(meleeWeapon.gameObject);
         meleeWeapon = weaponInstance;
         meleeWeapon.player = this;
+        SwapActiveWeapon(3);
 
         UpdateIdleAnimation();
     }
@@ -150,9 +151,10 @@ public class Player : MonoBehaviour, IDamageable
         Weapon weaponInstance = Instantiate(weapon, transform).GetComponent<Weapon>();
         if (rangedWeapon != null) Destroy(rangedWeapon.gameObject);
         rangedWeapon = weaponInstance;
-        meleeWeapon.player = this;
+        rangedWeapon.player = this;
 
         audioSource.PlayOneShot(equipWeaponSound);
+        SwapActiveWeapon(2);
 
         UpdateIdleAnimation();
     }
@@ -161,9 +163,10 @@ public class Player : MonoBehaviour, IDamageable
         Weapon weaponInstance = Instantiate(weapon, transform).GetComponent<Weapon>();
         if (specialWeapon != null) Destroy(specialWeapon.gameObject);
         specialWeapon = weaponInstance;
-        meleeWeapon.player = this;
+        specialWeapon.player = this;
 
         audioSource.PlayOneShot(equipWeaponSound);
+        SwapActiveWeapon(1);
 
         UpdateIdleAnimation();
     }

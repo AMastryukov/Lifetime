@@ -4797,12 +4797,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de6175059bfba748a6e03fdbc1c0850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 40
+  damage: 20
   range: 20
   fireRate: 8
-  clipSize: 0
   reloadTime: 0
-  knockback: 1000
+  knockback: 25
   isAutomatic: 1
   player: {fileID: 0}
   fireAudioClips:
@@ -4810,6 +4809,7 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 7680
+  ammoCount: 25
   ps: {fileID: 3874749145809714937}
 --- !u!82 &53102968086873101
 AudioSource:
