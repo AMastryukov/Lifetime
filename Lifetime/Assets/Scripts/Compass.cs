@@ -8,13 +8,19 @@ public class Compass : MonoBehaviour
 
     [SerializeField] private Image arrow;
 
-    // Update is called once per frame
+    private GameObject player;
+    private GameObject target;
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
+
     void Update()
     {
-        GameObject Target = GameObject.FindWithTag("Enemy");
-        GameObject player = GameObject.FindWithTag("Player");
+        target = GameObject.FindWithTag("Enemy");
 
-        if (Target == null)
+        if (target == null)
         {
             arrow.enabled = false;
             return;
@@ -22,6 +28,6 @@ public class Compass : MonoBehaviour
         
         arrow.enabled = true;
 
-        transform.rotation = Quaternion.LookRotation(Vector3.back, - player.transform.position + Target.transform.position);
+        transform.rotation = Quaternion.LookRotation(Vector3.back, - player.transform.position + target.transform.position);
     }
 }
