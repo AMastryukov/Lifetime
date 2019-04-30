@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected Sprite[] sprites;
 
+    [SerializeField] protected AudioClip[] hitmarkerSounds;
+
+    protected AudioSource audioSource;
     protected Movement movement;
 
     protected void AssignSkin()
@@ -23,6 +26,9 @@ public class Enemy : MonoBehaviour, IDamageable
     public virtual void TakeDamage(float damage)
     {
         health -= damage;
+
+        audioSource.PlayOneShot(hitmarkerSounds[Random.Range(0, hitmarkerSounds.Length)]);
+
         if (health <= 0) {
             Die();
         }

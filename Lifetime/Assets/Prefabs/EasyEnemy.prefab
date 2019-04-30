@@ -115,7 +115,7 @@ SpriteRenderer:
   m_SortingLayerID: -320207505
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 883a55c6ce95fe24b8341890bccc9d18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -182,6 +182,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 883a55c6ce95fe24b8341890bccc9d18, type: 3}
   - {fileID: 21300000, guid: f5ff199604d50884a8b422ce3eb22009, type: 3}
   - {fileID: 21300000, guid: e777e8ff0c742b64ab7ad71c1dc96573, type: 3}
+  hitmarkerSounds:
+  - {fileID: 8300000, guid: cf4ae7ecf3568714ea921233093e3605, type: 3}
+  - {fileID: 8300000, guid: 7f4b2ce97e591ba4894d694647cfc419, type: 3}
+  - {fileID: 8300000, guid: 511bbe2fd607af045aa77d60e55eb28d, type: 3}
   wanderSpeed: 20
   attackCooldown: 3
   attackArea: {fileID: 4979904059908963849}
@@ -226,7 +230,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.1617217
 --- !u!114 &4979904061258340249
 MonoBehaviour:
   m_ObjectHideFlags: 0

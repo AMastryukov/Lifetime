@@ -16,6 +16,8 @@ public class AssaultRifle : Weapon, IWeapon
 
             player.playerAnimator.Play("auto-fire");
             
+            audioSource.PlayOneShot(fireAudioClips[Random.Range(0, fireAudioClips.Length)]);
+
             // Put the weapon on cooldown
             StartCoroutine(WeaponCooldown());
 
