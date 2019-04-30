@@ -50,7 +50,7 @@ public class BasicEnemy : Enemy
     void Update()
     {
         if (onCooldown) {
-            movement.SetDirectionVector(Vector2.zero);
+            movement.SetDirectionVector(Vector2.zero, 0f);
             return;
         }
 
@@ -69,7 +69,7 @@ public class BasicEnemy : Enemy
                 movement.moveSpeed = speed;
             }
             if(agitated)
-            movement.SetDirectionVector(target.transform.position - transform.position);
+            movement.SetDirectionVector(target.transform.position - transform.position, 0f);
             movement.SetLookPosition(target.transform.position);
         }
         else {
@@ -78,12 +78,12 @@ public class BasicEnemy : Enemy
         }
 
         if (agitated) {
-            movement.SetDirectionVector(target.transform.position - transform.position);
+            movement.SetDirectionVector(target.transform.position - transform.position, 0f);
             movement.SetLookPosition(target.transform.position);
         } else {
             // Wander
             Vector3 newDirection = Vector3.Slerp(transform.up, targetDirection, 0.1f);
-            movement.SetDirectionVector(newDirection);
+            movement.SetDirectionVector(newDirection, 0f);
             movement.SetLookPosition(transform.position + newDirection);
 
             //var forward = transform.TransformDirection(Vector3.forward);

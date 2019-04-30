@@ -7,6 +7,8 @@ using UnityEngine;
 public enum Attribute { DAMAGE, SPEED, LUCK, KNOCKBACK, STAMINA };
 public class ShopManager : MonoBehaviour
 {
+    [SerializeField] private ShopPanel panel;
+
     [Header("Attribute Enums (just so you can see them XD)")]
     [SerializeField] private Attribute attribute;
 
@@ -44,8 +46,7 @@ public class ShopManager : MonoBehaviour
             currentLevel[key] = 0;
         }
     }
-
-
+    
     void Start()
     {
         levels.Add(Attribute.DAMAGE, damageLevels);
@@ -59,16 +60,18 @@ public class ShopManager : MonoBehaviour
         currentLevel.Add(Attribute.LUCK, 0);
         currentLevel.Add(Attribute.SPEED, 0);
         currentLevel.Add(Attribute.STAMINA, 0);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Update panel text
+        panel.UpdateText(
+            levels[Attribute.DAMAGE][currentLevel[Attribute.DAMAGE]].price,
+            levels[Attribute.SPEED][currentLevel[Attribute.SPEED]].price,
+            levels[Attribute.KNOCKBACK][currentLevel[Attribute.KNOCKBACK]].price);
     }
+    
     public bool AttributeUpgradable(Attribute attr) {
         return currentLevel[attr] < levels[attr].Length;
     }
+
     public bool AttributeUpgradable(int attr)
     {
         return currentLevel[(Attribute)attr] < levels[(Attribute)attr].Length;
@@ -91,6 +94,7 @@ public class ShopManager : MonoBehaviour
     {
         return AttributeUpgradable(attr) && EnoughLifetimeToUpgrade(attr);
     }
+
     public void PurchaseAttribute(Attribute attribute) {
         if (!AttributePurchasable(attribute)) {
             return;
@@ -115,6 +119,12 @@ public class ShopManager : MonoBehaviour
             default:
                 break;
         }
+
+        // Update panel text
+        panel.UpdateText(
+            levels[Attribute.DAMAGE][currentLevel[Attribute.DAMAGE]].price,
+            levels[Attribute.SPEED][currentLevel[Attribute.SPEED]].price,
+            levels[Attribute.KNOCKBACK][currentLevel[Attribute.KNOCKBACK]].price);
     }
 
     public void PurchaseAttribute(int attr)
@@ -123,8 +133,14 @@ public class ShopManager : MonoBehaviour
     }
 
     private void PurchaseDamage() {
+
+        if (!AttributeUpgradable(Attribute.DAMAGE) || !EnoughLifetimeToUpgrade(Attribute.DAMAGE))
+        {
+            return;
+        }
+
         Upgrade upgrade = levels[Attribute.DAMAGE][currentLevel[Attribute.DAMAGE]];
-        player.damageModifier = upgrade.value;
+        player.damageModifier += upgrade.value;
         player.DrainLifetime(upgrade.price);
         currentLevel[Attribute.DAMAGE]++;
     }
@@ -136,7 +152,15 @@ public class ShopManager : MonoBehaviour
 
     private void PurchaseSpeed()
     {
+        if (!AttributeUpgradable(Attribute.SPEED) || !EnoughLifetimeToUpgrade(Attribute.SPEED))
+        {
+            return;
+        }
 
+        Upgrade upgrade = levels[Attribute.SPEED][currentLevel[Attribute.SPEED]];
+        player.speedModifier += upgrade.value;
+        player.DrainLifetime(upgrade.price);
+        currentLevel[Attribute.SPEED]++;
     }
 
     private void PurchaseStamina()
@@ -146,7 +170,15 @@ public class ShopManager : MonoBehaviour
 
     private void PurchaseKnockback()
     {
+        if (!AttributeUpgradable(Attribute.KNOCKBACK) || !EnoughLifetimeToUpgrade(Attribute.KNOCKBACK))
+        {
+            return;
+        }
 
+        Upgrade upgrade = levels[Attribute.KNOCKBACK][currentLevel[Attribute.KNOCKBACK]];
+        player.knockbackModifier += upgrade.value;
+        player.DrainLifetime(upgrade.price);
+        currentLevel[Attribute.KNOCKBACK]++;
     }
 
     public void PurchaseMeleeWeapon(string name)
@@ -218,13 +250,15 @@ public class ShopManager : MonoBehaviour
 }
 
 [System.Serializable]
-public struct Upgrade{
+public struct Upgrade
+{
     public float value;
     public float price;
 }
 
 [System.Serializable]
-public struct WeaponUpgrade {
+public struct WeaponUpgrade
+{
     public string name;
     public GameObject prefab;
     public float price;

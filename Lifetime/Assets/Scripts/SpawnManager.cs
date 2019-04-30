@@ -33,18 +33,6 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Initialize(SpawnInfo[] spawnInfo, float spawnRate, float healthMultiplier)
     {
         this.spawnInfo = new SpawnInfo[spawnInfo.Length];

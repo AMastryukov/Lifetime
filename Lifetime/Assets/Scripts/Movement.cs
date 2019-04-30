@@ -9,10 +9,11 @@ public class Movement : MonoBehaviour
 
     protected Vector2 directionVector;
     private Vector3 lookPosition = Vector3.zero;
+    private float moveSpeedModifier = 0f;
 
     private void FixedUpdate()
     {
-        rigidBody.MovePosition(rigidBody.position + directionVector * moveSpeed * Time.deltaTime);
+        rigidBody.MovePosition(rigidBody.position + directionVector * (moveSpeed + moveSpeedModifier) * Time.deltaTime);
     }
 
     private void Update()
@@ -23,10 +24,12 @@ public class Movement : MonoBehaviour
         //transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
     }
 
-    public void SetDirectionVector(Vector2 newDirectionVector)
+    public void SetDirectionVector(Vector2 newDirectionVector, float extraSpeed)
     {
         directionVector = newDirectionVector;
         directionVector.Normalize();
+
+        moveSpeedModifier = extraSpeed;
     }
 
     public void SetLookPosition(Vector3 newLookPosition)

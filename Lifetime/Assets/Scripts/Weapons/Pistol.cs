@@ -39,14 +39,14 @@ public class Pistol : Weapon, IWeapon
             // Damage object if it can be damaged
             if (hit.collider.GetComponent<MonoBehaviour>() is IDamageable)
             {
-                ((IDamageable)hit.collider.GetComponent<MonoBehaviour>()).TakeDamage(damage * damageModifier);
+                ((IDamageable)hit.collider.GetComponent<MonoBehaviour>()).TakeDamage(damage + damageModifier);
             }
 
             // Push object based on knockback
             if (hit.collider.GetComponent<Rigidbody2D>())
             {
                 // hit.collider.GetComponent<Rigidbody2D>().velocity = directionVector * knockback;
-                hit.collider.GetComponent<Rigidbody2D>().AddForceAtPosition(directionVector * knockback * knockbackModifier, hit.point);
+                hit.collider.GetComponent<Rigidbody2D>().AddForceAtPosition(directionVector * (knockback + knockbackModifier), hit.point);
             }
 
             // Put the weapon on cooldown

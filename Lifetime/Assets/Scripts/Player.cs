@@ -32,15 +32,16 @@ public class Player : MonoBehaviour, IDamageable
 
     private PlayerController playerController;
     private AudioSource audioSource;
+    private ShopManager shopManager;
 
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
         audioSource = GameObject.FindGameObjectWithTag("SoundSystem").GetComponent<AudioSource>();
+        shopManager = FindObjectOfType<ShopManager>();
     }
     private void Start()
     {
-
         Reset();
     }
 
@@ -48,8 +49,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         playerStatus = PlayerStatus.ALIVE;
         lifetime = initialLifeTime;
-
-
+        
         equipMeleeWeapon(defaultMeleeWeapon);
         Destroy(rangedWeapon);
         Destroy(specialWeapon);
@@ -57,8 +57,6 @@ public class Player : MonoBehaviour, IDamageable
         specialWeapon = null;
 
         SwapActiveWeapon(3);
-
-        
     }
 
     public void SwapActiveWeapon(int weaponSlot)

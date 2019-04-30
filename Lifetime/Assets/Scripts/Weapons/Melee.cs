@@ -39,14 +39,14 @@ public class Melee : Weapon, IWeapon
                 // If object can be pushed, push it
                 if (hit.collider.GetComponent<Rigidbody2D>())
                 {
-                    hit.collider.GetComponent<Rigidbody2D>().AddForceAtPosition(directionVector * knockback, hit.point);
+                    hit.collider.GetComponent<Rigidbody2D>().AddForceAtPosition(directionVector * (knockback + knockbackModifier), hit.point);
                     //hit.collider.GetComponent<Rigidbody2D>().velocity = directionVector * knockback;
                 }
 
                 // Damage object if it can be damaged
                 if (hit.collider.GetComponent<MonoBehaviour>() is IDamageable)
                 {
-                    ((IDamageable)hit.collider.GetComponent<MonoBehaviour>()).TakeDamage(damage);
+                    ((IDamageable)hit.collider.GetComponent<MonoBehaviour>()).TakeDamage(damage + damageModifier);
                 }
             }
         }

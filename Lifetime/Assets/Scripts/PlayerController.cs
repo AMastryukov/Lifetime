@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         // Update player movement look position and direction
         playerMovement.SetLookPosition(playerInput.mousePosition);
-        playerMovement.SetDirectionVector(playerDirection);
+        playerMovement.SetDirectionVector(playerDirection, player.speedModifier);
 
         // When the player presses left click, fire their active weapon
         if ((player.activeWeapon.isAutomatic && playerInput.mouseLeftHeld) || (!player.activeWeapon.isAutomatic && playerInput.mouseLeftClick)) {
