@@ -14,7 +14,12 @@ public class HUDPanel : MonoBehaviour
     [SerializeField] private HUDWeaponSlot meleeSlot;
     [SerializeField] private HUDWeaponSlot rangedSlot;
     [SerializeField] private HUDWeaponSlot specialSlot;
-    
+
+    public Player player;
+    private void Awake()
+    {
+
+    }
     public void SelectWeaponSlot(int slot)
     {
         switch(slot)
@@ -49,6 +54,10 @@ public class HUDPanel : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        UpdateLifetime(player.lifetime);
+    }
     public void UpdatePlayerWeapons(Player player)
     {
         specialSlot.UpdateSpecialSLot(player.specialWeapon);

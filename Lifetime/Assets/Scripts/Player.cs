@@ -9,7 +9,6 @@ public class Player : MonoBehaviour, IDamageable
 
     public float lifetime = 0;
     public float initialLifeTime = 0;
-    private Transform spawnLocation;
 
     [Header("Attribute Modifiers")]
     public float damageModifier = 1;
@@ -35,13 +34,10 @@ public class Player : MonoBehaviour, IDamageable
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
-        //spawnLocation = GameObject.FindWithTag("PlayerSpawnPoint").transform;
     }
     private void Start()
     {
-        if (spawnLocation == null) {
-            Debug.LogError("No object tagged as PlayerSpawnPoint in scene");
-        }
+
         Reset();
     }
 
@@ -59,8 +55,7 @@ public class Player : MonoBehaviour, IDamageable
 
         SwapActiveWeapon(3);
 
-
-        //transform.position = spawnLocation.position;
+        
     }
 
     public void SwapActiveWeapon(int weaponSlot)

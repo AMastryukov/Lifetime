@@ -152,7 +152,6 @@ public class GameManager : MonoBehaviour
          */
 
     private void DisablePlayer() {
-        print("Now Here");
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Movement>().enabled = false;
         player.enabled = false;
@@ -160,7 +159,6 @@ public class GameManager : MonoBehaviour
 
     private void EnablePlayer()
     {
-        print("Here");
         player.enabled = true;
         player.GetComponent<PlayerController>().enabled = true;
         player.GetComponent<Movement>().enabled = true;

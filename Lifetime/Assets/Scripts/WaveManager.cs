@@ -39,7 +39,6 @@ public class WaveManager : MonoBehaviour
         if (currentWave == Waves.Length) {
             return -1;
         }
-        print(Waves[currentWave].spawns[0].enemyCount);
         int enemiesToBeSpawned = spawnManager.Begin(Waves[currentWave].spawns, Waves[currentWave].rate, Waves[currentWave].healthMultiplier);
         return enemiesToBeSpawned;
     }
