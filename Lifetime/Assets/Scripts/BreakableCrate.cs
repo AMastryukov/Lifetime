@@ -47,6 +47,7 @@ public class BreakableCrate : MonoBehaviour, IDamageable
             onBreak.Invoke();
 
             // Create a random weapon and give it to the player
+
             GameObject weaponDrop = Instantiate(weaponPrefabs[Random.Range(0, weaponPrefabs.Length)]);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().equipRangeWeapon(weaponDrop);
 
