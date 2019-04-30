@@ -47,14 +47,16 @@ public class SpawnManager : MonoBehaviour
 
     public void Initialize(SpawnInfo[] spawnInfo, float spawnRate, float healthMultiplier)
     {
+        this.spawnInfo = new SpawnInfo[spawnInfo.Length];
         spawnsRemaining = 0;
-        foreach (SpawnInfo spawn in spawnInfo) {
-            spawnsRemaining += spawn.enemyCount;
+        for (int i =0; i < spawnInfo.Length; i++) {
+            spawnsRemaining += spawnInfo[i].enemyCount;
+            this.spawnInfo[i].enemyCount = spawnInfo[i].enemyCount;
+            this.spawnInfo[i].enemyName = spawnInfo[i].enemyName;
         }
 
         this.healthMultiplier = healthMultiplier;
         this.spawnRate = spawnRate;
-        this.spawnInfo = spawnInfo;
     }
 
     public int Begin() {

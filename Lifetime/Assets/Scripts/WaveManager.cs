@@ -39,6 +39,7 @@ public class WaveManager : MonoBehaviour
         if (currentWave == Waves.Length) {
             return -1;
         }
+        print(Waves[currentWave].spawns[0].enemyCount);
         int enemiesToBeSpawned = spawnManager.Begin(Waves[currentWave].spawns, Waves[currentWave].rate, Waves[currentWave].healthMultiplier);
         return enemiesToBeSpawned;
     }
@@ -76,10 +77,10 @@ public class WaveManager : MonoBehaviour
 }
 
 [System.Serializable]
-public class Wave {
+public struct Wave {
 
     [SerializeField] public SpawnInfo[] spawns;
     [SerializeField] public float rate;
-    [SerializeField] public float healthMultiplier = 1;
+    [SerializeField] public float healthMultiplier;
 
 }
