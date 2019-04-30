@@ -187,11 +187,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8106456011797899522, guid: 1e8614a0140529644bca4350367cbc9b,
-        type: 3}
-      propertyPath: equipWeaponSound
-      value: 
-      objectReference: {fileID: 8300000, guid: b932bd621c607464092f23c6776485ce, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e8614a0140529644bca4350367cbc9b, type: 3}
 --- !u!1001 &921863389
@@ -468,11 +463,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 653605697405377877, guid: 610945a6be63ffa4c9c1514ef6f88896,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 610945a6be63ffa4c9c1514ef6f88896, type: 3}
 --- !u!1001 &2082636654
@@ -615,11 +605,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4217873760456170617, guid: 646624bd9c5c01a428c364c7c6227b4e,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.503
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 646624bd9c5c01a428c364c7c6227b4e, type: 3}

@@ -11,6 +11,8 @@ public class BreakableCrate : MonoBehaviour, IDamageable
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private AudioClip breakSound;
     [SerializeField] private UnityEvent onBreak;
+
+    [SerializeField] private GameObject[] weaponPrefabs;
     
     private float damageThresholdMedium, damageThresholdLow;
 
@@ -43,6 +45,10 @@ public class BreakableCrate : MonoBehaviour, IDamageable
         if (hitpoints <= 0f)
         {
             onBreak.Invoke();
+
+            // Create a random weapon and give it to the player
+            GameObject weaponDrop = Instantiate(weaponPrefabs[Random.Range(0, weaponPrefabs.Length)]);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().equipRangeWeapon(weaponDrop);
 
             audioSource.PlayOneShot(breakSound);
             gameObject.SetActive(false);

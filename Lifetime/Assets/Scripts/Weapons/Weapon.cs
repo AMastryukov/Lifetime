@@ -7,7 +7,6 @@ public class Weapon : MonoBehaviour, IWeapon
     public float damage;
     public float range;
     public float fireRate;
-    public int clipSize;
     public float reloadTime;
     public float knockback;
     public bool isAutomatic;
