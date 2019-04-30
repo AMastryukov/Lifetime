@@ -5942,6 +5942,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
         type: 3}
+      propertyPath: Waves.Array.data[0].spawns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
+        type: 3}
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 2036465531}
@@ -5974,6 +5979,16 @@ PrefabInstance:
         type: 3}
       propertyPath: WaveOver.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: WaveOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
+        type: 3}
+      propertyPath: Waves.Array.data[0].spawns.Array.data[1].enemyCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
+        type: 3}
+      propertyPath: Waves.Array.data[0].spawns.Array.data[1].enemyName
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e93595aee88674949b94ab3deb6173e9, type: 3}
@@ -6051,6 +6066,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 174719265206533626, guid: 6ace6a0ec7b15514f8f12ba011874435,
         type: 3}
+      propertyPath: enemies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 174719265206533626, guid: 6ace6a0ec7b15514f8f12ba011874435,
+        type: 3}
       propertyPath: SpawnComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1083445491}
@@ -6119,6 +6139,17 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[11]
       value: 
       objectReference: {fileID: 16628492}
+    - target: {fileID: 174719265206533626, guid: 6ace6a0ec7b15514f8f12ba011874435,
+        type: 3}
+      propertyPath: enemies.Array.data[2].enemyName
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 174719265206533626, guid: 6ace6a0ec7b15514f8f12ba011874435,
+        type: 3}
+      propertyPath: enemies.Array.data[2].enemyPrefab
+      value: 
+      objectReference: {fileID: 653605697405377879, guid: 610945a6be63ffa4c9c1514ef6f88896,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ace6a0ec7b15514f8f12ba011874435, type: 3}
 --- !u!1 &495219191
@@ -13104,7 +13135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142287174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.340158, y: 28.826002, z: -25.226562}
+  m_LocalPosition: {x: 7.340158, y: 28.826002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 740979116}

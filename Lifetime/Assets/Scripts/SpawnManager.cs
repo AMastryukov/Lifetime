@@ -100,7 +100,11 @@ public class SpawnManager : MonoBehaviour
                     //Debug.LogError("Was not able to spawn enemy");
                 }
                 else {
-                    enemyInstance.GetComponent<Enemy>().health *= healthMultiplier;
+                    Enemy enemy = enemyInstance.GetComponent<Enemy>();
+                    if (enemy)
+                    { 
+                        enemy.health *= healthMultiplier;
+                    }
                     spawnInfo[i].enemyCount--;
                     spawnsRemaining--;
                 }
