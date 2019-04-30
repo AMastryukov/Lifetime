@@ -172,7 +172,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.054163635}
   serializedVersion: 2
-  m_Radius: 0.35
+  m_Radius: 0.18369073
 --- !u!114 &8106456011797899522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,12 +193,13 @@ MonoBehaviour:
   staminaModifier: 1
   knockbackModifier: 1
   speedModifier: 1
-  defaultMeleeWeapon: {fileID: 2078925262982348473, guid: b3267bb67d99c9247900d868fb5c5a12,
+  defaultMeleeWeapon: {fileID: 3874749147324130068, guid: 90eb644fd15e0164dbd667bbdee05db7,
     type: 3}
   activeWeapon: {fileID: 0}
   specialWeapon: {fileID: 0}
   rangedWeapon: {fileID: 0}
   meleeWeapon: {fileID: 0}
+  equipWeaponSound: {fileID: 0}
   playerStatus: 0
   playerDeath:
     m_PersistentCalls:

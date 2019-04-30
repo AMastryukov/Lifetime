@@ -15,6 +15,8 @@ public class Pistol : Weapon, IWeapon
             ps.Emit(1);
 
             player.playerAnimator.Play("pistol-fire");
+
+            audioSource.PlayOneShot(fireAudioClips[Random.Range(0, fireAudioClips.Length)]);
             
             // Put the weapon on cooldown
             StartCoroutine(WeaponCooldown());

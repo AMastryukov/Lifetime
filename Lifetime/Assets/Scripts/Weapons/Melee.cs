@@ -27,7 +27,9 @@ public class Melee : Weapon, IWeapon
             {
                 player.playerAnimator.Play("melee-cross");
             }
-            
+
+            audioSource.PlayOneShot(fireAudioClips[Random.Range(0, fireAudioClips.Length)]);
+
             // Put the weapon on cooldown
             StartCoroutine(WeaponCooldown());
 

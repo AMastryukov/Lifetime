@@ -145,6 +145,9 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 06f562816e0862e4b84898c00194235f, type: 3}
   - {fileID: 21300000, guid: f110dffc5b9686d4b9bccfacdcb8160b, type: 3}
+  audioSource: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 8631529f416b8fa42980ab7a63514027, type: 3}
+  breakSound: {fileID: 8300000, guid: 2b6419ff56b14b34bbd90f57b9a5135d, type: 3}
   onBreak:
     m_PersistentCalls:
       m_Calls: []

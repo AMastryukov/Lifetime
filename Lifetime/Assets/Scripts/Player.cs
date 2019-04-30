@@ -24,16 +24,19 @@ public class Player : MonoBehaviour, IDamageable
     public Weapon specialWeapon;
     public Weapon rangedWeapon;
     public Weapon meleeWeapon;
+    [SerializeField] private AudioClip equipWeaponSound;
 
     [Header("Player Settings")]
     [SerializeField] private PlayerStatus playerStatus;
     [SerializeField] private UnityEvent playerDeath;
 
     private PlayerController playerController;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        audioSource = GameObject.FindGameObjectWithTag("SoundSystem").GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -67,6 +70,7 @@ public class Player : MonoBehaviour, IDamageable
                 if (specialWeapon)
                 {
                     activeWeapon = specialWeapon;
+                    audioSource.PlayOneShot(equipWeaponSound);
                 }
                 break;
 
@@ -75,6 +79,7 @@ public class Player : MonoBehaviour, IDamageable
                 if (rangedWeapon)
                 {
                     activeWeapon = rangedWeapon;
+                    audioSource.PlayOneShot(equipWeaponSound);
                 }
                 break;
 
@@ -147,6 +152,8 @@ public class Player : MonoBehaviour, IDamageable
         rangedWeapon = weaponInstance;
         meleeWeapon.player = this;
 
+        audioSource.PlayOneShot(equipWeaponSound);
+
         UpdateIdleAnimation();
     }
 
@@ -155,6 +162,8 @@ public class Player : MonoBehaviour, IDamageable
         if (specialWeapon != null) Destroy(specialWeapon.gameObject);
         specialWeapon = weaponInstance;
         meleeWeapon.player = this;
+
+        audioSource.PlayOneShot(equipWeaponSound);
 
         UpdateIdleAnimation();
     }
