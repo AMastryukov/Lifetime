@@ -16,6 +16,7 @@ public class HUDPanel : MonoBehaviour
     [SerializeField] private HUDWeaponSlot specialSlot;
 
     public Player player;
+    public GameManager manager;
     private void Awake()
     {
 
@@ -57,6 +58,8 @@ public class HUDPanel : MonoBehaviour
     private void Update()
     {
         UpdateLifetime(player.lifetime);
+        UpdateEnemyCount(manager.enemiesRemaining);
+
     }
     public void UpdatePlayerWeapons(Player player)
     {

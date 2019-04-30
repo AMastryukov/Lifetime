@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
      Private variables
          */
     [Header("For debug")]
-    [SerializeField] private int enemiesRemaining;
+    [SerializeField] public int enemiesRemaining;
     [SerializeField] private float gameTime;
     [SerializeField] private bool gameInProgress;
 
