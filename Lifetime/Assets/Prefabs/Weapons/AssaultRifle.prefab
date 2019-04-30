@@ -4797,11 +4797,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de6175059bfba748a6e03fdbc1c0850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 25
   range: 20
   fireRate: 8
   reloadTime: 0
-  knockback: 25
+  knockback: 75
   isAutomatic: 1
   player: {fileID: 0}
   fireAudioClips:

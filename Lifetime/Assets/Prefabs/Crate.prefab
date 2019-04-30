@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b100a718b78b986489fbc9e042b905ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 250
+  hitpoints: 200
   sprites:
   - {fileID: 21300000, guid: 06f562816e0862e4b84898c00194235f, type: 3}
   - {fileID: 21300000, guid: f110dffc5b9686d4b9bccfacdcb8160b, type: 3}

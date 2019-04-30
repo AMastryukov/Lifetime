@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495940c8a614e7c43a16d6d9275d7f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
-  range: 1
+  damage: 60
+  range: 0.1
   fireRate: 2
   reloadTime: 0
-  knockback: 250
+  knockback: 350
   isAutomatic: 0
   player: {fileID: 0}
   fireAudioClips:

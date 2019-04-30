@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float gameTime;
     [SerializeField] private bool gameInProgress;
 
+    [SerializeField] private float lifeTimeKillBonus = 5f;
+
 
     private Player player;
 
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviour
          */
     public void RegisterEnemyDeath() {
         enemiesRemaining--;
-        player.AddLifetime(5);
+        player.AddLifetime(lifeTimeKillBonus);
     }
 
     /*

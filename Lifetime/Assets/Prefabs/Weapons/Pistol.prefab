@@ -4801,7 +4801,7 @@ MonoBehaviour:
   range: 10
   fireRate: 5
   reloadTime: 0
-  knockback: 100
+  knockback: 150
   isAutomatic: 0
   player: {fileID: 0}
   fireAudioClips:

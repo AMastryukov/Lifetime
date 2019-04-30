@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameOverPanel : MonoBehaviour, IPanel
 {
     [SerializeField] private Canvas panelCanvas;
-    [SerializeField] private UnityEvent restartGame;
 
     public void OpenPanel()
     {
@@ -23,7 +22,7 @@ public class GameOverPanel : MonoBehaviour, IPanel
     {
         if (panelCanvas.enabled && Input.GetKey(KeyCode.Return))
         {
-            restartGame.Invoke();
+            SceneManager.LoadSceneAsync("MainMenu");
             panelCanvas.enabled = false;
         }
     }
