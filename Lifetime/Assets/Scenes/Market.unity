@@ -6263,6 +6263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
         type: 3}
+      propertyPath: NoMoreWaves.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
+        type: 3}
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 2036465531}
@@ -7624,6 +7629,16 @@ PrefabInstance:
     - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
         type: 3}
       propertyPath: Waves.Array.data[8].healthMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
+        type: 3}
+      propertyPath: NoMoreWaves.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 325826969752439182, guid: e93595aee88674949b94ab3deb6173e9,
+        type: 3}
+      propertyPath: NoMoreWaves.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -24521,6 +24536,11 @@ PrefabInstance:
       propertyPath: lifeTimeKillBonus
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 197194604509746693, guid: 4b5b4790c43c9064a8f0378626034e39,
+        type: 3}
+      propertyPath: winGamePanel
+      value: 
+      objectReference: {fileID: 2005347748}
     - target: {fileID: 197194604509746694, guid: 4b5b4790c43c9064a8f0378626034e39,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24661,6 +24681,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0864a245ec17ac43b78a816406fa32d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2005347748 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7876678935199299412, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 434538962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c437a6fd78f9d1d49986d9384ace344c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2036465531 stripped
