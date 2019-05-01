@@ -4809,7 +4809,7 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 7680
-  ammoCount: 25
+  ammoCount: 20
   ps: {fileID: 3874749145809714937}
 --- !u!82 &53102968086873101
 AudioSource:

@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damage: 15
+  damage: 10
   speed: 25
   spriteRenderer: {fileID: 4979904060835583756}
   sprites:
@@ -187,7 +187,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7f4b2ce97e591ba4894d694647cfc419, type: 3}
   - {fileID: 8300000, guid: 511bbe2fd607af045aa77d60e55eb28d, type: 3}
   wanderSpeed: 15
-  attackCooldown: 1
+  attackCooldown: 0.5
   attackArea: {fileID: 4979904059908963849}
   target: {fileID: 0}
   ps: {fileID: 2175379524062971515, guid: b1097f0063dec04448e592e72099ef3a, type: 3}
