@@ -181,7 +181,6 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 883a55c6ce95fe24b8341890bccc9d18, type: 3}
   - {fileID: 21300000, guid: f5ff199604d50884a8b422ce3eb22009, type: 3}
-  - {fileID: 21300000, guid: e777e8ff0c742b64ab7ad71c1dc96573, type: 3}
   hitmarkerSounds:
   - {fileID: 8300000, guid: cf4ae7ecf3568714ea921233093e3605, type: 3}
   - {fileID: 8300000, guid: 7f4b2ce97e591ba4894d694647cfc419, type: 3}
