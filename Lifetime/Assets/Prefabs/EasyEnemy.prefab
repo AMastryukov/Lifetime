@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damage: 10
+  damage: 8
   speed: 25
   spriteRenderer: {fileID: 4979904060835583756}
   sprites:

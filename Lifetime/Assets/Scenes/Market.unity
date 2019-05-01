@@ -5736,7 +5736,7 @@ PrefabInstance:
     - target: {fileID: 7130405032476861641, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
         type: 3}
       propertyPath: speedLevels.Array.data[0].price
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7130405032476861641, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
         type: 3}
@@ -5751,7 +5751,7 @@ PrefabInstance:
     - target: {fileID: 7130405032476861641, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
         type: 3}
       propertyPath: damageLevels.Array.data[0].price
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7130405032476861641, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
         type: 3}
@@ -5956,7 +5956,7 @@ PrefabInstance:
     - target: {fileID: 7130405032476861641, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
         type: 3}
       propertyPath: knockbackLevels.Array.data[1].price
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7130405032476861641, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
         type: 3}
@@ -6001,7 +6001,7 @@ PrefabInstance:
     - target: {fileID: 7130405032476861641, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
         type: 3}
       propertyPath: knockbackLevels.Array.data[0].price
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7130405032476861641, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
         type: 3}
@@ -6036,7 +6036,7 @@ PrefabInstance:
     - target: {fileID: 9023524410287434818, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5774528992547112179, guid: 8ec00c339e16a2d48af880fd2cf80f2b,
         type: 3}
