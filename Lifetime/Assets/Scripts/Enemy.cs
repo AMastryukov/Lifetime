@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected void AssignSkin()
     {
         // Set a random sprite for the enemy
-        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length - 1)];
+        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
     }
 
     public virtual void TakeDamage(float damage)

@@ -48,7 +48,14 @@ public class SpawnManager : MonoBehaviour
     }
 
     public int Begin() {
-        int startingSpawnNumber = spawnsRemaining;
+        int startingSpawnNumber = 0;
+
+        for (int i = 0; i < spawnInfo.Length; i++)
+        {
+            if (spawnInfo[i].enemyName == EnemyName.HARD) continue;
+            startingSpawnNumber += spawnInfo[i].enemyCount;
+        }
+
         spawner = StartCoroutine(SpawnCycle());
         return startingSpawnNumber;
     }
