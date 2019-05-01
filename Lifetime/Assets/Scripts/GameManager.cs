@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ShopPanel shopPanel;
     [SerializeField] private HUDPanel hudPanel;
     [SerializeField] private GameOverPanel gameOverPanel;
+    [SerializeField] private GameOverPanel winGamePanel;
 
 
     /*
@@ -82,6 +83,13 @@ public class GameManager : MonoBehaviour
         gameInProgress = false;
     }
 
+    private void WinGame() {
+        DisablePlayer();
+        ClearDisplay();
+        EnableWinScreen();
+        gameInProgress = false;
+    }
+
     /*
      This is where the next wave begins. The waveManager knows the following information:
         1. How many of each type of enemy to spawn
@@ -116,7 +124,7 @@ public class GameManager : MonoBehaviour
         
         if (waveManager.LastWaveEnded())
         {
-            GameOver();
+            WinGame();
             return;
         }
 
@@ -187,6 +195,17 @@ public class GameManager : MonoBehaviour
         gameOverPanel.OpenPanel();
     }
 
+    private void DisableWinScreen()
+    {
+        winGamePanel.ClosePanel();
+    }
+
+    private void EnableWinScreen()
+    {
+        ClearDisplay();
+        winGamePanel.OpenPanel();
+    }
+
     private void DisableHUD()
     {
         hudPanel.ClosePanel();
@@ -202,5 +221,6 @@ public class GameManager : MonoBehaviour
         DisableHUD();
         DisableGameOverScreen();
         DisableShop();
+        DisableWinScreen();
     }
 }
